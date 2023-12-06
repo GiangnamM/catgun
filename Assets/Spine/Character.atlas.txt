@@ -1,0 +1,790 @@
+Character.png
+size:570,570
+filter:Linear,Linear
+pma:true
+scale:0.22
+Meo Basic/Ban Tay
+bounds:505,211,24,22
+Skin Hiphop/Ban Tay
+bounds:505,211,24,22
+Skin Non Vit/Ban Tay
+bounds:505,211,24,22
+Skin Nude/Ban Tay
+bounds:505,211,24,22
+Meo Basic/Body 01
+bounds:505,310,63,51
+Meo Basic/Body 02
+bounds:305,4,46,10
+Meo Basic/Body 02.2
+bounds:554,291,17,9
+rotate:90
+Meo Basic/Body 03
+bounds:384,130,39,17
+Meo Basic/Eyes L
+bounds:427,22,22,30
+Skin Doreamon/Eyes L
+bounds:427,22,22,30
+Skin Heo/Eyes L
+bounds:427,22,22,30
+Skin Hiphop/Eyes L
+bounds:427,22,22,30
+Skin Khung Long/Eyes L
+bounds:427,22,22,30
+Skin Nude/Eyes L
+bounds:427,22,22,30
+Meo Basic/Eyes R
+bounds:387,2,18,26
+rotate:90
+Skin Doreamon/Eyes R
+bounds:387,2,18,26
+rotate:90
+Skin Heo/Eyes R
+bounds:387,2,18,26
+rotate:90
+Skin Hiphop/Eyes R
+bounds:387,2,18,26
+rotate:90
+Skin Khung Long/Eyes R
+bounds:387,2,18,26
+rotate:90
+Skin Nude/Eyes R
+bounds:387,2,18,26
+rotate:90
+Meo Basic/GUN 01
+bounds:267,187,52,28
+Skin Doreamon/GUN 01
+bounds:267,187,52,28
+Skin Heo/GUN 01
+bounds:267,187,52,28
+Skin Hiphop/GUN 01
+bounds:267,187,52,28
+Skin Khung Long/GUN 01
+bounds:267,187,52,28
+Skin Non Vit/GUN 01
+bounds:267,187,52,28
+Skin Nude/GUN 01
+bounds:267,187,52,28
+Skin Phi Hanh Gia/GUN 01
+bounds:267,187,52,28
+Meo Basic/GUN 02
+bounds:207,5,99,40
+rotate:90
+Skin Doreamon/GUN 02
+bounds:207,5,99,40
+rotate:90
+Skin Heo/GUN 02
+bounds:207,5,99,40
+rotate:90
+Skin Hiphop/GUN 02
+bounds:207,5,99,40
+rotate:90
+Skin Khung Long/GUN 02
+bounds:207,5,99,40
+rotate:90
+Skin Non Vit/GUN 02
+bounds:207,5,99,40
+rotate:90
+Skin Nude/GUN 02
+bounds:207,5,99,40
+rotate:90
+Skin Phi Hanh Gia/GUN 02
+bounds:207,5,99,40
+rotate:90
+Meo Basic/GUN 02.2
+bounds:250,323,36,15
+rotate:90
+Skin Doreamon/GUN 02.2
+bounds:250,323,36,15
+rotate:90
+Skin Heo/GUN 02.2
+bounds:250,323,36,15
+rotate:90
+Skin Hiphop/GUN 02.2
+bounds:250,323,36,15
+rotate:90
+Skin Khung Long/GUN 02.2
+bounds:250,323,36,15
+rotate:90
+Skin Non Vit/GUN 02.2
+bounds:250,323,36,15
+rotate:90
+Skin Nude/GUN 02.2
+bounds:250,323,36,15
+rotate:90
+Skin Phi Hanh Gia/GUN 02.2
+bounds:250,323,36,15
+rotate:90
+Meo Basic/GUN 03
+bounds:115,320,133,39
+Skin Doreamon/GUN 03
+bounds:115,320,133,39
+Skin Heo/GUN 03
+bounds:115,320,133,39
+Skin Hiphop/GUN 03
+bounds:115,320,133,39
+Skin Khung Long/GUN 03
+bounds:115,320,133,39
+Skin Non Vit/GUN 03
+bounds:115,320,133,39
+Skin Nude/GUN 03
+bounds:115,320,133,39
+Skin Phi Hanh Gia/GUN 03
+bounds:115,320,133,39
+Meo Basic/GUN 04
+bounds:215,180,138,50
+rotate:90
+Skin Doreamon/GUN 04
+bounds:215,180,138,50
+rotate:90
+Skin Heo/GUN 04
+bounds:215,180,138,50
+rotate:90
+Skin Hiphop/GUN 04
+bounds:215,180,138,50
+rotate:90
+Skin Khung Long/GUN 04
+bounds:215,180,138,50
+rotate:90
+Skin Non Vit/GUN 04
+bounds:215,180,138,50
+rotate:90
+Skin Nude/GUN 04
+bounds:215,180,138,50
+rotate:90
+Skin Phi Hanh Gia/GUN 04
+bounds:215,180,138,50
+rotate:90
+Meo Basic/GUN 05
+bounds:267,217,142,50
+rotate:90
+Skin Doreamon/GUN 05
+bounds:267,217,142,50
+rotate:90
+Skin Heo/GUN 05
+bounds:267,217,142,50
+rotate:90
+Skin Hiphop/GUN 05
+bounds:267,217,142,50
+rotate:90
+Skin Khung Long/GUN 05
+bounds:267,217,142,50
+rotate:90
+Skin Non Vit/GUN 05
+bounds:267,217,142,50
+rotate:90
+Skin Nude/GUN 05
+bounds:267,217,142,50
+rotate:90
+Skin Phi Hanh Gia/GUN 05
+bounds:267,217,142,50
+rotate:90
+Meo Basic/Glow 01
+bounds:399,207,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Doreamon/Glow 01
+bounds:399,207,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Heo/Glow 01
+bounds:399,207,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Hiphop/Glow 01
+bounds:399,207,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Khung Long/Glow 01
+bounds:399,207,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Non Vit/Glow 01
+bounds:399,207,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Nude/Glow 01
+bounds:399,207,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Phi Hanh Gia/Glow 01
+bounds:399,207,30,38
+offsets:1,1,32,40
+rotate:90
+Meo Basic/Glow 02
+bounds:442,2,18,13
+rotate:90
+Skin Doreamon/Glow 02
+bounds:442,2,18,13
+rotate:90
+Skin Heo/Glow 02
+bounds:442,2,18,13
+rotate:90
+Skin Hiphop/Glow 02
+bounds:442,2,18,13
+rotate:90
+Skin Khung Long/Glow 02
+bounds:442,2,18,13
+rotate:90
+Skin Non Vit/Glow 02
+bounds:442,2,18,13
+rotate:90
+Skin Nude/Glow 02
+bounds:442,2,18,13
+rotate:90
+Skin Phi Hanh Gia/Glow 02
+bounds:442,2,18,13
+rotate:90
+Meo Basic/Glow 03
+bounds:439,200,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Doreamon/Glow 03
+bounds:439,200,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Heo/Glow 03
+bounds:439,200,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Hiphop/Glow 03
+bounds:439,200,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Khung Long/Glow 03
+bounds:439,200,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Non Vit/Glow 03
+bounds:439,200,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Nude/Glow 03
+bounds:439,200,30,38
+offsets:1,1,32,40
+rotate:90
+Skin Phi Hanh Gia/Glow 03
+bounds:439,200,30,38
+offsets:1,1,32,40
+rotate:90
+Meo Basic/Glow 04
+bounds:107,326,18,6
+rotate:90
+Skin Doreamon/Glow 04
+bounds:107,326,18,6
+rotate:90
+Skin Heo/Glow 04
+bounds:107,326,18,6
+rotate:90
+Skin Hiphop/Glow 04
+bounds:107,326,18,6
+rotate:90
+Skin Khung Long/Glow 04
+bounds:107,326,18,6
+rotate:90
+Skin Non Vit/Glow 04
+bounds:107,326,18,6
+rotate:90
+Skin Nude/Glow 04
+bounds:107,326,18,6
+rotate:90
+Skin Phi Hanh Gia/Glow 04
+bounds:107,326,18,6
+rotate:90
+Meo Basic/Glow 5
+bounds:490,281,21,13
+rotate:90
+Skin Doreamon/Glow 5
+bounds:490,281,21,13
+rotate:90
+Skin Heo/Glow 5
+bounds:490,281,21,13
+rotate:90
+Skin Hiphop/Glow 5
+bounds:490,281,21,13
+rotate:90
+Skin Khung Long/Glow 5
+bounds:490,281,21,13
+rotate:90
+Skin Non Vit/Glow 5
+bounds:490,281,21,13
+rotate:90
+Skin Nude/Glow 5
+bounds:490,281,21,13
+rotate:90
+Skin Phi Hanh Gia/Glow 5
+bounds:490,281,21,13
+rotate:90
+Meo Basic/Glow 6
+bounds:479,201,19,29
+offsets:0,0,19,30
+Skin Doreamon/Glow 6
+bounds:479,201,19,29
+offsets:0,0,19,30
+Skin Heo/Glow 6
+bounds:479,201,19,29
+offsets:0,0,19,30
+Skin Hiphop/Glow 6
+bounds:479,201,19,29
+offsets:0,0,19,30
+Skin Khung Long/Glow 6
+bounds:479,201,19,29
+offsets:0,0,19,30
+Skin Non Vit/Glow 6
+bounds:479,201,19,29
+offsets:0,0,19,30
+Skin Nude/Glow 6
+bounds:479,201,19,29
+offsets:0,0,19,30
+Skin Phi Hanh Gia/Glow 6
+bounds:479,201,19,29
+offsets:0,0,19,30
+Meo Basic/Glow 7
+bounds:484,170,29,16
+rotate:90
+Skin Doreamon/Glow 7
+bounds:484,170,29,16
+rotate:90
+Skin Heo/Glow 7
+bounds:484,170,29,16
+rotate:90
+Skin Hiphop/Glow 7
+bounds:484,170,29,16
+rotate:90
+Skin Khung Long/Glow 7
+bounds:484,170,29,16
+rotate:90
+Skin Non Vit/Glow 7
+bounds:484,170,29,16
+rotate:90
+Skin Nude/Glow 7
+bounds:484,170,29,16
+rotate:90
+Skin Phi Hanh Gia/Glow 7
+bounds:484,170,29,16
+rotate:90
+Meo Basic/Glow 8
+bounds:353,2,32,18
+Skin Doreamon/Glow 8
+bounds:353,2,32,18
+Skin Heo/Glow 8
+bounds:353,2,32,18
+Skin Hiphop/Glow 8
+bounds:353,2,32,18
+Skin Khung Long/Glow 8
+bounds:353,2,32,18
+Skin Non Vit/Glow 8
+bounds:353,2,32,18
+Skin Nude/Glow 8
+bounds:353,2,32,18
+Skin Phi Hanh Gia/Glow 8
+bounds:353,2,32,18
+Meo Basic/Glow Body 01
+bounds:328,106,22,50
+rotate:90
+Skin Doreamon/Glow Body 01
+bounds:328,106,22,50
+rotate:90
+Skin Heo/Glow Body 01
+bounds:328,106,22,50
+rotate:90
+Skin Hiphop/Glow Body 01
+bounds:328,106,22,50
+rotate:90
+Skin Khung Long/Glow Body 01
+bounds:328,106,22,50
+rotate:90
+Skin Non Vit/Glow Body 01
+bounds:328,106,22,50
+rotate:90
+Skin Nude/Glow Body 01
+bounds:328,106,22,50
+rotate:90
+Skin Phi Hanh Gia/Glow Body 01
+bounds:328,106,22,50
+rotate:90
+Meo Basic/Glow Body 02
+bounds:380,106,22,50
+rotate:90
+Skin Doreamon/Glow Body 02
+bounds:380,106,22,50
+rotate:90
+Skin Heo/Glow Body 02
+bounds:380,106,22,50
+rotate:90
+Skin Hiphop/Glow Body 02
+bounds:380,106,22,50
+rotate:90
+Skin Khung Long/Glow Body 02
+bounds:380,106,22,50
+rotate:90
+Skin Non Vit/Glow Body 02
+bounds:380,106,22,50
+rotate:90
+Skin Nude/Glow Body 02
+bounds:380,106,22,50
+rotate:90
+Skin Phi Hanh Gia/Glow Body 02
+bounds:380,106,22,50
+rotate:90
+Meo Basic/Glow Body 03
+bounds:415,54,22,50
+Skin Doreamon/Glow Body 03
+bounds:415,54,22,50
+Skin Heo/Glow Body 03
+bounds:415,54,22,50
+Skin Hiphop/Glow Body 03
+bounds:415,54,22,50
+Skin Khung Long/Glow Body 03
+bounds:415,54,22,50
+Skin Non Vit/Glow Body 03
+bounds:415,54,22,50
+Skin Nude/Glow Body 03
+bounds:415,54,22,50
+Skin Phi Hanh Gia/Glow Body 03
+bounds:415,54,22,50
+Meo Basic/Glow Face 01
+bounds:303,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Doreamon/Glow Face 01
+bounds:303,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Heo/Glow Face 01
+bounds:303,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Hiphop/Glow Face 01
+bounds:303,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Khung Long/Glow Face 01
+bounds:303,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Non Vit/Glow Face 01
+bounds:303,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Nude/Glow Face 01
+bounds:303,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Phi Hanh Gia/Glow Face 01
+bounds:303,49,55,54
+offsets:2,0,57,55
+rotate:90
+Meo Basic/Glow Face 02
+bounds:328,130,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Doreamon/Glow Face 02
+bounds:328,130,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Heo/Glow Face 02
+bounds:328,130,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Hiphop/Glow Face 02
+bounds:328,130,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Khung Long/Glow Face 02
+bounds:328,130,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Non Vit/Glow Face 02
+bounds:328,130,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Nude/Glow Face 02
+bounds:328,130,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Phi Hanh Gia/Glow Face 02
+bounds:328,130,55,54
+offsets:2,0,57,55
+rotate:90
+Meo Basic/Glow Face 03
+bounds:359,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Doreamon/Glow Face 03
+bounds:359,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Heo/Glow Face 03
+bounds:359,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Hiphop/Glow Face 03
+bounds:359,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Khung Long/Glow Face 03
+bounds:359,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Non Vit/Glow Face 03
+bounds:359,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Nude/Glow Face 03
+bounds:359,49,55,54
+offsets:2,0,57,55
+rotate:90
+Skin Phi Hanh Gia/Glow Face 03
+bounds:359,49,55,54
+offsets:2,0,57,55
+rotate:90
+Meo Basic/Head
+bounds:439,363,103,101
+Meo Basic/Head Die
+bounds:106,113,103,101
+Meo Basic/Leg L
+bounds:504,116,22,21
+Meo Basic/Leg R
+bounds:461,83,23,23
+Meo Basic/Mouth
+bounds:439,54,27,16
+rotate:90
+Skin Doreamon/Mouth
+bounds:439,54,27,16
+rotate:90
+Skin Heo/Mouth
+bounds:439,54,27,16
+rotate:90
+Skin Hiphop/Mouth
+bounds:439,54,27,16
+rotate:90
+Skin Khung Long/Mouth
+bounds:439,54,27,16
+rotate:90
+Skin Non Vit/Mouth
+bounds:439,54,27,16
+rotate:90
+Skin Nude/Mouth
+bounds:439,54,27,16
+rotate:90
+Skin Phi Hanh Gia/Mouth
+bounds:439,54,27,16
+rotate:90
+Meo Basic/Tail
+bounds:531,226,34,26
+Meo Basic/Tay
+bounds:484,153,16,15
+Skin Hiphop/Tay
+bounds:484,153,16,15
+Skin Non Vit/Tay
+bounds:484,153,16,15
+Skin Nude/Tay
+bounds:484,153,16,15
+Meo Basic/Tay L
+bounds:400,239,26,37
+rotate:90
+Meo Basic/Tay R
+bounds:439,259,24,46
+rotate:90
+Skin Doreamon/Ban Tay
+bounds:502,162,24,22
+Skin Doreamon/Body 01
+bounds:269,121,64,57
+offsets:0,4,64,65
+rotate:90
+Skin Doreamon/Body 02
+bounds:487,233,46,16
+offsets:4,0,52,16
+rotate:90
+Skin Doreamon/Head
+bounds:2,2,109,101
+offsets:7,0,116,101
+rotate:90
+Skin Doreamon/Head Die
+bounds:105,2,109,100
+offsets:7,5,116,105
+rotate:90
+Skin Doreamon/Leg L
+bounds:469,129,24,22
+offsets:0,0,24,24
+Skin Doreamon/Leg R
+bounds:502,186,24,23
+offsets:0,0,27,23
+Skin Doreamon/Tail
+bounds:249,2,35,26
+rotate:90
+Skin Doreamon/Tay
+bounds:492,39,16,15
+rotate:90
+Skin Doreamon/Tay L
+bounds:321,187,29,40
+Skin Doreamon/Tay R
+bounds:505,283,25,47
+offsets:1,0,27,47
+rotate:90
+Skin Heo/Ban Tay
+bounds:528,152,24,22
+Skin Heo/Body 01
+bounds:319,295,64,57
+offsets:0,4,64,65
+rotate:90
+Skin Heo/Body 02
+bounds:384,150,45,13
+rotate:90
+Skin Heo/Head
+bounds:107,216,106,102
+offsets:0,3,106,105
+Skin Heo/Head Die
+bounds:462,466,106,102
+Skin Heo/Leg L
+bounds:502,139,24,21
+Skin Heo/Leg R
+bounds:528,176,24,23
+offsets:0,0,27,23
+Skin Heo/Tail
+bounds:439,83,27,20
+rotate:90
+Skin Heo/Tay
+bounds:460,112,16,15
+Skin Heo/Tay L
+bounds:399,177,28,38
+rotate:90
+Skin Heo/Tay R
+bounds:373,246,25,47
+Skin Hiphop/Body 01
+bounds:211,106,72,56
+rotate:90
+Skin Hiphop/Body 02
+bounds:439,285,49,17
+Skin Hiphop/Head
+bounds:115,361,112,102
+Skin Hiphop/Head Die
+bounds:235,467,112,101
+Skin Hiphop/Leg L
+bounds:528,133,24,17
+Skin Hiphop/Leg R
+bounds:451,28,24,20
+rotate:90
+Skin Hiphop/Tail
+bounds:277,2,35,26
+rotate:90
+Skin Non Vit/Tail
+bounds:277,2,35,26
+rotate:90
+Skin Nude/Tail
+bounds:277,2,35,26
+rotate:90
+Skin Phi Hanh Gia/Tail
+bounds:277,2,35,26
+rotate:90
+Skin Hiphop/Tay L
+bounds:352,187,28,40
+Skin Hiphop/Tay R
+bounds:439,232,25,46
+rotate:90
+Skin Khung Long/Ban Tay
+bounds:403,22,25,22
+rotate:90
+Skin Khung Long/Body 01
+bounds:439,304,64,57
+offsets:0,4,64,65
+Skin Khung Long/Body 02
+bounds:469,153,45,13
+offsets:1,0,46,13
+rotate:90
+Skin Khung Long/Head
+bounds:349,466,111,102
+Skin Khung Long/Head Die
+bounds:2,113,111,102
+rotate:90
+Skin Khung Long/Leg L
+bounds:457,57,24,21
+rotate:90
+Skin Khung Long/Leg R
+bounds:457,2,24,23
+offsets:0,0,27,23
+rotate:90
+Skin Khung Long/Tail
+bounds:399,149,38,26
+Skin Khung Long/Tay
+bounds:478,112,16,15
+Skin Khung Long/Tay L
+bounds:439,160,28,38
+Skin Khung Long/Tay R
+bounds:353,22,25,48
+rotate:90
+Skin Non Vit/Body 01
+bounds:378,296,64,59
+rotate:90
+Skin Non Vit/Eyes L
+bounds:439,136,22,28
+offsets:0,0,22,30
+rotate:90
+Skin Non Vit/Eyes R
+bounds:415,2,18,25
+offsets:0,0,18,26
+rotate:90
+Skin Non Vit/Head
+bounds:2,346,111,110
+Skin Non Vit/Head Die
+bounds:2,458,111,110
+Skin Non Vit/Leg L
+bounds:473,31,24,17
+rotate:90
+Skin Non Vit/Leg R
+bounds:482,5,24,20
+rotate:90
+Skin Non Vit/Tay L
+bounds:305,16,31,46
+rotate:90
+Skin Non Vit/Tay R
+bounds:544,413,24,51
+Skin Nude/Body 01
+bounds:319,229,64,52
+offsets:0,3,64,58
+rotate:90
+Skin Nude/Body 02
+bounds:382,197,47,15
+rotate:90
+Skin Nude/Head
+bounds:334,362,103,102
+Skin Nude/Head Die
+bounds:229,361,103,102
+Skin Nude/Leg L
+bounds:486,83,23,21
+rotate:90
+Skin Nude/Leg R
+bounds:528,108,24,23
+Skin Nude/Tay L
+bounds:400,267,27,37
+rotate:90
+Skin Nude/Tay R
+bounds:505,235,24,46
+Skin Phi Hanh Gia/Ban Tay
+bounds:432,112,26,22
+offsets:0,0,26,24
+Skin Phi Hanh Gia/Body 01
+bounds:249,39,65,52
+offsets:0,1,65,54
+rotate:90
+Skin Phi Hanh Gia/Body 02
+bounds:269,106,46,13
+Skin Phi Hanh Gia/Head
+bounds:2,226,118,103
+rotate:90
+Skin Phi Hanh Gia/Head Die
+bounds:115,465,118,103
+Skin Phi Hanh Gia/Leg L
+bounds:480,57,24,22
+rotate:90
+Skin Phi Hanh Gia/Leg R
+bounds:531,201,25,23
+Skin Phi Hanh Gia/Tay
+bounds:509,99,16,15
+Skin Phi Hanh Gia/Tay L
+bounds:531,254,27,37
+offsets:0,2,28,41
+rotate:90
+Skin Phi Hanh Gia/Tay R
+bounds:544,364,24,47
+offsets:1,1,26,50
