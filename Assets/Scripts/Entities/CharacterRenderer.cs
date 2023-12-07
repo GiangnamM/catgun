@@ -154,21 +154,12 @@ namespace App
 
         private void UpdateDirection(Vector2 lastDir)
         {
-            if (_character.IsGrounded)
-            {
-                if (_direction.x != 0)
-                {
-                    State = AnimState.MOVE;
-                }
-                else
-                {
-                    State = AnimState.IDLE;
-                }
-            }
-            else
+            if (!_character.IsGrounded)
             {
                 State = AnimState.JUMP;
+                return;
             }
+            State = _direction.x != 0 ? AnimState.MOVE : AnimState.IDLE;
         }
     }
 }
