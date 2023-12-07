@@ -1,15 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace App
 {
     public class Character : MonoBehaviour
     {
-        private const int MaxJump = 2;
+        public static Character instance;
+        private const int MaxJump = 1;
         private const float MoveSpeed = 6.1f;
-        private const float JumpPower = 15.8f;
+        private const float JumpPower = 14f;
         // private const float CharHeight = 2f;
 
         [SerializeField] private CharacterRenderer _characterRenderer;
@@ -20,10 +18,10 @@ namespace App
         private bool _isGrounded;
         private Vector2 _direction;
         private Vector2 _lastDirection;
-        private int? _invincibleKey;
         private bool _invincible;
         private float _horizontal;
         private float _vertical;
+        private bool _isDead;
 
         public bool IsGrounded
         {
@@ -68,6 +66,17 @@ namespace App
 
         public bool IsStunning { get; private set; }
 
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         void Start()
         {
@@ -80,13 +89,15 @@ namespace App
         {
             _horizontal = Input.GetAxisRaw("Horizontal");
             _vertical = Input.GetAxisRaw("Vertical");
-            if (Mathf.Abs(_body.velocity.y) < 0.1f && !IsGrounded) {
+            if (Mathf.Abs(_body.velocity.y) < 0.1f && !IsGrounded)
+            {
                 IsGrounded = IsOnGround();
             }
         }
 
         private void FixedUpdate()
         {
+            if (_isDead) return;
             Direction = new Vector2(_horizontal, _vertical);
         }
 
@@ -111,17 +122,17 @@ namespace App
                 0.1f, LayerMask.GetMask("Wall"));
             return raycastHit.collider != null;
         }
-        
-        public void Jump(bool isPowerJump = false)
+
+        public void Jump()
         {
-            if (_jumpCount == MaxJump)
+            if (_jumpCount == MaxJump || _isDead)
             {
                 return;
             }
 
             _jumpCount++;
             IsGrounded = false;
-            Velocity = new Vector2(Velocity.x, isPowerJump ? JumpPower * 1.01f : JumpPower);
+            Velocity = new Vector2(Velocity.x, JumpPower);
         }
 
         private void Fire()
@@ -141,6 +152,13 @@ namespace App
             //         SpawnNormalBullet(gunType, angle, 0f, startY);
             //     }
             // }
+        }
+
+        public void Completed()
+        {
+            Debug.Log("Complete");
+            _isDead = true;
+            Move(Vector2.zero);
         }
     }
 }
