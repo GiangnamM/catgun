@@ -1,0 +1,18 @@
+skeleton.png
+size:406,406
+filter:Linear,Linear
+pma:true
+Glow
+bounds:244,55,140,248
+offsets:3,3,146,254
+Glow 02
+bounds:200,305,99,191
+rotate:90
+Glow 3
+bounds:2,178,196,226
+offsets:9,11,214,248
+Object
+bounds:2,9,167,240
+rotate:90
+Rectangle 6
+bounds:393,393,11,11
