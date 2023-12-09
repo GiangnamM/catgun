@@ -1,6 +1,6 @@
 using System;
 
-namespace Rainbow5s {
+namespace Extension {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class InjectAttribute : Attribute {
         public string Tag { get; }

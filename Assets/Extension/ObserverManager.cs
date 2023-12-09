@@ -4,7 +4,7 @@ using System.Linq;
 
 using JetBrains.Annotations;
 
-namespace Rainbow5s {
+namespace Extension {
     public class ObserverManager<T> : IObserverManager<T> {
         [NotNull]
         private readonly Dictionary<int, T> _observers;

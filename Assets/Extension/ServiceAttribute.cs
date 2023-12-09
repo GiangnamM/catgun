@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 
 using UnityEngine.Assertions;
 
-namespace Rainbow5s {
+namespace Extension {
     [AttributeUsage(AttributeTargets.Interface)]
     public class ServiceAttribute : Attribute {
         /// <summary>

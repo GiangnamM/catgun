@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 using UnityEngine;
 
-namespace Rainbow5s {
+namespace Extension {
     public class JsonDataManager : IDataManager {
         public Task Initialize() {
             return Task.CompletedTask;

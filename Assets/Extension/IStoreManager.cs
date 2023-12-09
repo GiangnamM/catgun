@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 using JetBrains.Annotations;
 
-namespace Rainbow5s {
+namespace Extension {
     public interface IStoreItem {
         /// <summary>
         /// Gets the ID of this item.

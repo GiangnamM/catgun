@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace Rainbow5s {
+namespace Extension {
     public interface IServiceLocator {
         /// <summary>
         /// Registers a service.

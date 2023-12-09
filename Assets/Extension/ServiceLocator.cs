@@ -5,7 +5,7 @@ using System.Reflection;
 
 using JetBrains.Annotations;
 
-namespace Rainbow5s {
+namespace Extension {
     public class ServiceLocator : IServiceLocator {
         private static ServiceLocator _sharedInstance;
 

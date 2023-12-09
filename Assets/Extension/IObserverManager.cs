@@ -2,7 +2,7 @@ using System;
 
 using JetBrains.Annotations;
 
-namespace Rainbow5s {
+namespace Extension {
     public interface IObserverManager<T> {
         /// <summary>
         /// Adds an observer.

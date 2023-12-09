@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 
 using JetBrains.Annotations;
 
-namespace Rainbow5s {
+namespace Extension {
     [Service(typeof(IDataManager))]
     public interface IDataManager {
         /// <summary>
