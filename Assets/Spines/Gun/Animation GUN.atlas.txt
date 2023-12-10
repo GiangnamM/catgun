@@ -1,0 +1,19 @@
+Animation GUN.png
+size:272,272
+filter:Linear,Linear
+pma:true
+scale:0.34
+GLOW
+bounds:191,63,21,28
+rotate:90
+GUN 1
+bounds:2,200,188,70
+GUN 2
+bounds:192,86,184,63
+rotate:90
+GUN 3
+bounds:2,60,187,66
+GUN 4
+bounds:2,128,184,70
+GUN 5
+bounds:2,2,193,56
