@@ -18,7 +18,7 @@ namespace App
                 },    {
                     GunSkin.Bazooka, new DefaultSkinGunManager.SkinConfig()
                     {
-                        cost = 200,
+                        cost = 0,
                     }
                 },    {
                     GunSkin.FireBlaster, new DefaultSkinGunManager.SkinConfig()

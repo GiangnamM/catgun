@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 using Extension;
 
@@ -12,8 +11,7 @@ namespace App {
     public class UpgradeInfoTab : MonoBehaviour {
         private readonly List<GunUpgradeInfoView> _entries = new() {
             { GunUpgradeInfoView.Damage },
-            { GunUpgradeInfoView.Ammo },
-
+            { GunUpgradeInfoView.FireRate },
         };
         
         [SerializeField]
@@ -71,7 +69,6 @@ namespace App {
                 _level = value;
                 _currentLevelUpgradeText.text = $"Lv {value + 1}";
                 _nextLevelUpgradeText.text = $"Lv {value + 2}";
-                UpdateView(_id);
             }
         }
 
@@ -87,59 +84,15 @@ namespace App {
             ServiceLocator.Instance.ResolveInjection(this);
         }
 
-        private void UpdateView(string id) {
-            // var (gun, fireRate) = _configGunItemViews[id];
-            // var gunConfigs = _configManager.GunConfigs.FirstOrDefault(p => p.GunType == gun);
-            // if (gunConfigs == null) {
-            //     return;
-            // }
-            // var gunInfoConfig = new List<string> {
-            //     gunConfigs.Damage.ToString(),
-            //     gunConfigs.MaxBullet.ToString(),
-            //     fireRate,
-            //     gunConfigs.DamePerSecond.ToString(),
-            //     gunConfigs.ReloadTime.ToString(),
-            // };
-            // var isUnlimitedAmmo = gunConfigs.UnlimitedBullet;
-            // for (var i = 0; i < _infoGunUpgradeViews.Length; i++) {
-            //     var type = _entries[i];
-            //     var item = _infoGunUpgradeViews[i];
-            //     item.ViewType = type;
-            //     var itemEnableUpgrade = _infoGunUpgradeViews[i].EnableUpgrade =
-            //         EnableUpgrade && _configsItemEnableUpgrades[type];
-            //     item.CurrentValue = gunInfoConfig[i];
-            //     if (isUnlimitedAmmo) {
-            //         if (type is GunUpgradeInfoView.Ammo) {
-            //             item.IsUnlimitedAmmo = true;
-            //         }
-            //     }
-            //     if (type is GunUpgradeInfoView.CoolDown) {
-            //         item.gameObject.SetActive(!isUnlimitedAmmo);
-            //     }
-            //     if (!itemEnableUpgrade) {
-            //         continue;
-            //     }
-            //     var (dameList, bulletList) = _configManager.AllUpgradeGunTuples[gun];
-            //     switch (type) {
-            //         case GunUpgradeInfoView.Ammo:
-            //             item.CurrentValue =
-            //                 (gunConfigs.MaxBullet + UpgradeHelper.GetBulletAtLevel(_level, bulletList)).ToString();
-            //             item.NextValue =
-            //                 (gunConfigs.MaxBullet + UpgradeHelper.GetBulletAtLevel(_level + 1, bulletList))
-            //                 .ToString();
-            //             break;
-            //         case GunUpgradeInfoView.Damage:
-            //             //Hard
-            //             item.CurrentValue =
-            //                 (UpgradeHelper.GetDameAtLevel(_level, dameList) + gunConfigs.Damage).ToString();
-            //             item.NextValue = (gunConfigs.Damage + UpgradeHelper.GetDameAtLevel(_level + 1, dameList))
-            //                 .ToString();
-            //             break;
-            //         default:
-            //             throw new ArgumentOutOfRangeException();
-            //     }
-                //
-            // }
+        private void UpdateView() {
+            
+            for (var i = 0; i < _infoGunUpgradeViews.Length; i++) {
+                var type = _entries[i];
+                var item = _infoGunUpgradeViews[i];
+                item.ViewType = type;
+                // item.CurrentValue = 
+                
+            }
         }
 
         public void OnButtonUpgradePressed() {

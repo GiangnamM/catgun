@@ -1,58 +1,81 @@
 using System;
-
 using System.Linq;
-
+using DG.Tweening;
 using Extension;
-
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace App {
-    public enum InventoryState {
+namespace App
+{
+    public enum InventoryState
+    {
         Equip,
         Equipped,
         Buy,
     }
 
-    public class UpgradeDialog : MonoBehaviour {
-        
+    public class UpgradeDialog : MonoBehaviour
+    {
+        public enum Result
+        {
+            Close,
+        }
+
         [Serializable]
-        private class StateAndButton {
+        private class StateAndButton
+        {
             public InventoryState inventoryState;
             public Button button;
         }
 
-        [SerializeField]
-        private RectTransform _dialogLayer;
+        [SerializeField] private RectTransform _dialogLayer;
 
-        [SerializeField]
-        private UpgradeItemViewHelper[] _upgradeItemViews;
+        [SerializeField] private UpgradeItemViewHelper[] _upgradeItemViews;
 
-        [SerializeField]
-        private StateAndButton[] _stateAndButtons;
+        [SerializeField] private StateAndButton[] _stateAndButtons;
 
-        [SerializeField]
-        private SkinGunSelector _gunSelector;
+        [SerializeField] private SkinGunSelector _gunSelector;
 
-        [SerializeField]
-        private UpgradeInfoTab _upgradeInfoTab;
-        
+        [SerializeField] private UpgradeInfoTab _upgradeInfoTab;
+
+        [SerializeField] private TextMeshProUGUI _costText;
+
         [Inject] private IStoreManager _storeManager;
+        [Inject] private ISkinGunManager _skinGunManager;
         private bool _initialized;
-        // private ObserverHandle _handle;
         private InventoryState _inventoryState;
+        private Canvas _canvas;
+        private bool _isActive;
+        private int _cost;
+        private GunSkin _gunSelecting;
 
-        private string IdSelecting { get; set; }
-
-        public int Cost {
-            get => _upgradeInfoTab.Cost;
-            set => _upgradeInfoTab.Cost = value;
+        private GunSkin GunSelecting
+        {
+            get => _gunSelecting;
+            set
+            {
+                _gunSelecting = value;
+                UpdateView(value);
+            }
         }
 
-        
-        public InventoryState InventoryState {
+        private int Cost
+        {
+            get => _cost;
+            set
+            {
+                _cost = value;
+                _costText.text = $"{_cost}";
+            }
+        }
+
+
+        public InventoryState InventoryState
+        {
             get => _inventoryState;
-            private set {
+            private set
+            {
                 _inventoryState = value;
                 UpdateStateDisplay(value);
             }
@@ -60,87 +83,121 @@ namespace App {
 
         private Action<InventoryState, string> OnButtonStateCallBack { get; set; }
 
-        private void Awake() {
+        public Action<Result> OnDidHide { get; set; }
+
+        public static UpgradeDialog Show(Canvas canvas)
+        {
+            var prefab = Resources.Load<UpgradeDialog>($"Prefabs/UI/{nameof(UpgradeDialog)}");
+            var dialog = Instantiate(prefab, canvas.transform, false);
+            dialog._canvas = canvas;
+            return dialog;
+        }
+
+        private void Awake()
+        {
             Initialize();
             OnButtonStateCallBack = OnStateCallBack;
         }
 
-        private void Initialize() {
-            if (_initialized) {
+        private void Initialize()
+        {
+            if (_initialized)
+            {
                 return;
             }
+
             _initialized = true;
             ServiceLocator.Instance.ResolveInjection(this);
             InitGunItem();
-            UpdateDefaultDisplay();
-            // _handle = new ObserverHandle();
-            // _handle.AddObserver(_storeManager, new StoreManagerObserver {
-            //     OnItemBalanceChanged = OnItemBalanceChanged,
-            // });
-        }
-        
-        private void InitGunItem() {
-            // for (var i = 0; i < _upgradeItemViews.Length; i++) {
-            //     var view = _upgradeItemViews[i];
-            //     var idInventoryConfig = _configsIds[i];
-            //     var (gun, upgradeItemId, _, enableUpgrade) = UpgradeHelper.ConfigInventories[idInventoryConfig];
-            //     var isUnlock = _inventoryManager.IsOwned(idInventoryConfig);
-            //     view.GunType = gun;
-            //     view.IsUnlock = isUnlock;
-            //     view.EnableUpgrade = enableUpgrade;
-            //     if (enableUpgrade) {
-            //         var upgradeItem = _upgradeManager.GetItem(upgradeItemId);
-            //         if (upgradeItem != null) {
-            //             view.Level = upgradeItem.Level + 1;
-            //         }
-            //     }
-            //     var itemEquipped = _inventoryManager.GetEquippedItem(CategoryGun);
-            //     var isEquipped = itemEquipped != null && itemEquipped.Id == idInventoryConfig;
-            //     view.OnItemViewPressed = () => {
-            //         //Update inventory
-            //         IdSelecting = idInventoryConfig;
-            //         InventoryState = !isUnlock ? InventoryState.Buy :
-            //             isEquipped ? InventoryState.Equipped : InventoryState.Equip;
-            //         if (view.IsSelected) {
-            //             return;
-            //         }
-            //         _gunSelector.GunType = gun;
-            //         UpdateItemSelected(view);
-            //         UpdateUpgradeInfoTab(idInventoryConfig);
-            //     };
-            // }
         }
 
-        // private int GetCostUpgradeItem(string upgradeItemId, string storeItemId) {
-        //     
-        // }
-
-        // private void UpdateUpgradeInfoTab(string idInventoryConfig) {
-        //    
-        // }
-        //
-        // private int GetLevelUpgrade(string id) {
-        //     
-        // }
-
-        private void OnButtonUpgradeCallBack(string upgradeItemId) {
-            
-        }
-
-        private void UpdateStateDisplay(InventoryState state) {
-            foreach (var layer in _stateAndButtons) {
-                layer.button.gameObject.SetActive(false);
-            }
-            var view = _stateAndButtons.FirstOrDefault(p => p.inventoryState == state);
-            if (view == null) {
+        private void Hide(Result result)
+        {
+            if (!_isActive)
+            {
                 return;
             }
+
+            _isActive = false;
+            DOTween.Sequence()
+                .Append(_dialogLayer.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack))
+                .AppendCallback(() =>
+                {
+                    Destroy(gameObject);
+                    OnDidHide?.Invoke(result);
+                });
+        }
+
+
+        private void InitGunItem()
+        {
+            var entries = new[]
+            {
+                GunSkin.Bazooka,
+                GunSkin.FireBlaster,
+                GunSkin.Laser,
+            };
+            for (var i = 0; i < _upgradeItemViews.Length; i++)
+            {
+                var view = _upgradeItemViews[i];
+                var entry = entries[i];
+                var gunInfo = _skinGunManager.GetInfo(entry);
+                var isOwned = gunInfo.IsOwned;
+                var isSelected = gunInfo.IsSelected;
+                view.GunType = entry;
+                view.IsUnlock = isOwned;
+                view.IsSelected = isSelected;
+                if (isSelected)
+                {
+                    GunSelecting = entry;
+                }
+
+                view.OnItemViewPressed = () => { GunSelecting = entry; };
+            }
+        }
+
+
+        private void UpdateView(GunSkin gun)
+        {
+            var gunInfo = _skinGunManager.GetInfo(gun);
+            InventoryState = !gunInfo.IsOwned ? InventoryState.Buy :
+                gunInfo.IsSelected ? InventoryState.Equipped : InventoryState.Equip;
+            Cost = gunInfo.Cost;
+            _gunSelector.GunType = gun;
+            UpdateItemSelected(gun);
+            UpdateUpgradeInfoTab();
+        }
+
+        private void UpdateUpgradeInfoTab()
+        {
+        }
+        //
+
+        private void OnButtonUpgradeCallBack(string upgradeItemId)
+        {
+        }
+
+        private void UpdateStateDisplay(InventoryState state)
+        {
+            foreach (var layer in _stateAndButtons)
+            {
+                layer.button.gameObject.SetActive(false);
+            }
+
+            var view = _stateAndButtons.FirstOrDefault(p => p.inventoryState == state);
+            if (view == null)
+            {
+                return;
+            }
+
             view.button.gameObject.SetActive(true);
         }
 
         //To do
-        private void OnStateCallBack(InventoryState state, string id) {
-            switch (state) {
+        private void OnStateCallBack(InventoryState state, string id)
+        {
+            switch (state)
+            {
                 case InventoryState.Equip:
                     EquipItem(id);
                     break;
@@ -155,44 +212,35 @@ namespace App {
             }
         }
 
-        private void EquipItem(string id) {
+        private void EquipItem(string id)
+        {
             //To do equip inventory
-            
         }
 
-        private void OpenUnlockGunDialog(string id) {
-            
+        private void OpenUnlockGunDialog(string id)
+        {
         }
 
-        private void UpdateDefaultDisplay() {
-           
-        }
-
-        private void UpdateItemSelected(UpgradeItemViewHelper item) {
-            foreach (var view in _upgradeItemViews) {
-                view.IsSelected = false;
+        private void UpdateItemSelected(GunSkin gun)
+        {
+            foreach (var view in _upgradeItemViews)
+            {
+                view.IsSelected = view.GunType == gun;
             }
-            item.IsSelected = true;
+        }
+        
+        public void OnStateInventoryButtonPressed()
+        {
         }
 
-        private void OnItemBalanceChanged(IStoreItem item, int balance, int amount) {
-            
+        public void OnCloseButtonPressed()
+        {
+            Hide(Result.Close);
         }
 
-        public void OnStateInventoryButtonPressed() {
-            
+        public void OnSettingsButtonPressed()
+        {
         }
-
-        public void OnCloseButtonPressed() {
-            
-        }
-
-        public void OnSettingsButtonPressed() {
-            
-        }
-
-        public void CheatPieceUpgrade(GunSkin gun, int amount) {
-            
-        }
+        
     }
 }
