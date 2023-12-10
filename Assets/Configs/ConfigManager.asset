@@ -1,0 +1,366 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4808f5aff090490a9c8ff33158d253d1, type: 3}
+  m_Name: ConfigManager
+  m_EditorClassIdentifier: 
+  _minTimeStep: 0.001
+  _maxTimeStep: 0.016666668
+  _characterConfigs:
+  - skin: 0
+    PersonConfig:
+      rid: 829426993357914112
+  - skin: 1
+    PersonConfig:
+      rid: 1498110410722377728
+  - skin: 2
+    PersonConfig:
+      rid: 1498110410722377729
+  _gunConfigs:
+  - _gunType: 0
+    _damage: 10
+    _fireRate: 3.5
+    _maxBullet: 0
+    _bulletPerShoot: 1
+    _speed: 15
+    _reloadTime: 0
+    _unlimitedBullet: 1
+  - _gunType: 4
+    _damage: 12
+    _fireRate: 4
+    _maxBullet: 30
+    _bulletPerShoot: 1
+    _speed: 15
+    _reloadTime: 2.5
+    _unlimitedBullet: 0
+  - _gunType: 1
+    _damage: 15
+    _fireRate: 5
+    _maxBullet: 35
+    _bulletPerShoot: 1
+    _speed: 15
+    _reloadTime: 2.5
+    _unlimitedBullet: 0
+  - _gunType: 5
+    _damage: 17
+    _fireRate: 6
+    _maxBullet: 35
+    _bulletPerShoot: 1
+    _speed: 15
+    _reloadTime: 3
+    _unlimitedBullet: 0
+  - _gunType: 6
+    _damage: 20
+    _fireRate: 7
+    _maxBullet: 37
+    _bulletPerShoot: 1
+    _speed: 10
+    _reloadTime: 3
+    _unlimitedBullet: 0
+  _enemyConfigs:
+  - skin: 3
+    PersonConfig:
+      rid: 829426993357914114
+    GunConfig:
+      rid: 829426993357914116
+  - skin: 4
+    PersonConfig:
+      rid: 829426993357914117
+    GunConfig:
+      rid: 829426993357914118
+  - skin: 5
+    PersonConfig:
+      rid: 829426993357914120
+    GunConfig:
+      rid: 829426993357914121
+  - skin: 6
+    PersonConfig:
+      rid: 829426993357914123
+    GunConfig:
+      rid: 829426993357914124
+  - skin: 7
+    PersonConfig:
+      rid: 829426993357914132
+    GunConfig:
+      rid: 829426993357914133
+  _upgradeGuns:
+  - gunType: 4
+    damage:
+    - 0
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    bullet: 00000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000
+  - gunType: 1
+    damage:
+    - 0
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    bullet: 00000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000
+  - gunType: 5
+    damage:
+    - 0
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    bullet: 00000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000
+  - gunType: 6
+    damage:
+    - 0
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    bullet: 00000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 829426993357914112
+      type: {class: PersonConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _strategy:
+          rid: -2
+        _maxHealth: 200
+        _moveSpeed: 5
+        _attackDame: 20
+    - rid: 829426993357914114
+      type: {class: PersonConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _strategy:
+          rid: 829426993357914115
+        _maxHealth: 200
+        _moveSpeed: 0
+        _attackDame: 0
+    - rid: 829426993357914115
+      type: {class: ShootStrategy, ns: App, asm: Assembly-CSharp}
+      data:
+        _distanceActive: 8
+        _canAimFull: 0
+        _canAimFollowX: 1
+    - rid: 829426993357914116
+      type: {class: Gun/GunConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _gunType: 3
+        _damage: 20
+        _fireRate: 0.25
+        _maxBullet: 0
+        _bulletPerShoot: 1
+        _speed: 8
+        _reloadTime: 0
+        _unlimitedBullet: 1
+    - rid: 829426993357914117
+      type: {class: PersonConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _strategy:
+          rid: 829426993357914126
+        _maxHealth: 300
+        _moveSpeed: 3
+        _attackDame: 0
+    - rid: 829426993357914118
+      type: {class: Gun/GunConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _gunType: 2
+        _damage: 30
+        _fireRate: 0.3
+        _maxBullet: 0
+        _bulletPerShoot: 1
+        _speed: 7
+        _reloadTime: 0
+        _unlimitedBullet: 1
+    - rid: 829426993357914120
+      type: {class: PersonConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _strategy:
+          rid: 829426993357914122
+        _maxHealth: 500
+        _moveSpeed: 0
+        _attackDame: 0
+    - rid: 829426993357914121
+      type: {class: Gun/GunConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _gunType: 7
+        _damage: 45
+        _fireRate: 0.3
+        _maxBullet: 0
+        _bulletPerShoot: 1
+        _speed: 8
+        _reloadTime: 0
+        _unlimitedBullet: 1
+    - rid: 829426993357914122
+      type: {class: ShootStrategy, ns: App, asm: Assembly-CSharp}
+      data:
+        _distanceActive: 12
+        _canAimFull: 1
+        _canAimFollowX: 0
+    - rid: 829426993357914123
+      type: {class: PersonConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _strategy:
+          rid: 829426993357914129
+        _maxHealth: 700
+        _moveSpeed: 3
+        _attackDame: 0
+    - rid: 829426993357914124
+      type: {class: Gun/GunConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _gunType: 6
+        _damage: 60
+        _fireRate: 0.5
+        _maxBullet: 0
+        _bulletPerShoot: 1
+        _speed: 7
+        _reloadTime: 0
+        _unlimitedBullet: 0
+    - rid: 829426993357914126
+      type: {class: CompositeStrategy, ns: App, asm: Assembly-CSharp}
+      data:
+        _items:
+        - rid: 829426993357914127
+        - rid: 829426993357914128
+    - rid: 829426993357914127
+      type: {class: ShootStrategy, ns: App, asm: Assembly-CSharp}
+      data:
+        _distanceActive: 8
+        _canAimFull: 0
+        _canAimFollowX: 1
+    - rid: 829426993357914128
+      type: {class: ChaseStrategy, ns: App, asm: Assembly-CSharp}
+      data:
+        _distanceActive: 15
+    - rid: 829426993357914129
+      type: {class: CompositeStrategy, ns: App, asm: Assembly-CSharp}
+      data:
+        _items:
+        - rid: 829426993357914130
+        - rid: 829426993357914131
+    - rid: 829426993357914130
+      type: {class: ChaseStrategy, ns: App, asm: Assembly-CSharp}
+      data:
+        _distanceActive: 15
+    - rid: 829426993357914131
+      type: {class: ShootStrategy, ns: App, asm: Assembly-CSharp}
+      data:
+        _distanceActive: 8
+        _canAimFull: 1
+        _canAimFollowX: 0
+    - rid: 829426993357914132
+      type: {class: PersonConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _strategy:
+          rid: 829426993357914134
+        _maxHealth: 1120
+        _moveSpeed: 3
+        _attackDame: 0
+    - rid: 829426993357914133
+      type: {class: Gun/GunConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _gunType: 5
+        _damage: 40
+        _fireRate: 1
+        _maxBullet: 0
+        _bulletPerShoot: 1
+        _speed: 7
+        _reloadTime: 0
+        _unlimitedBullet: 1
+    - rid: 829426993357914134
+      type: {class: CompositeStrategy, ns: App, asm: Assembly-CSharp}
+      data:
+        _items:
+        - rid: 829426993357914135
+        - rid: 829426993357914136
+    - rid: 829426993357914135
+      type: {class: ChaseStrategy, ns: App, asm: Assembly-CSharp}
+      data:
+        _distanceActive: 15
+    - rid: 829426993357914136
+      type: {class: ShootStrategy, ns: App, asm: Assembly-CSharp}
+      data:
+        _distanceActive: 8
+        _canAimFull: 1
+        _canAimFollowX: 0
+    - rid: 1498110410722377728
+      type: {class: PersonConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _strategy:
+          rid: -2
+        _maxHealth: 200
+        _moveSpeed: 0
+        _attackDame: 20
+    - rid: 1498110410722377729
+      type: {class: PersonConfig, ns: App, asm: Assembly-CSharp}
+      data:
+        _strategy:
+          rid: -2
+        _maxHealth: 200
+        _moveSpeed: 0
+        _attackDame: 20
