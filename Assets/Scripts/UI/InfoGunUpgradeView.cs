@@ -9,10 +9,7 @@ using UnityEngine.UI;
 namespace App {
     public enum GunUpgradeInfoView {
         Damage,
-        Ammo,
         FireRate,
-        DamePerSecond,
-        CoolDown,
     }
 
     public class InfoGunUpgradeView : MonoBehaviour {
@@ -40,35 +37,13 @@ namespace App {
 
         [SerializeField]
         private TextMeshProUGUI _valueText;
-
-        [SerializeField]
-        private GameObject _layerShowUpgrade;
-
-        [SerializeField]
-        private GameObject _layerShowValue;
-
-        [SerializeField]
-        private GameObject _layerUnlimitedAmmo;
-
-        [SerializeField]
-        private GameObject _layerValue;
-
-        private bool _enableUpgrade;
+        
         private GunUpgradeInfoView _viewType;
-        private string _currentValue;
-        private string _nextValue;
+        private float _currentValue;
+        private float _nextValue;
         private bool _isUnlimitedAmmo;
-
-        public bool EnableUpgrade {
-            get => _enableUpgrade;
-            set {
-                _enableUpgrade = value;
-                _layerShowUpgrade.SetActive(value);
-                _layerShowValue.SetActive(!value);
-            }
-        }
-
-        public string CurrentValue {
+        
+        public float CurrentValue {
             get => _currentValue;
             set {
                 _currentValue = value;
@@ -77,23 +52,14 @@ namespace App {
             }
         }
 
-        public string NextValue {
+        public float NextValue {
             get => _nextValue;
             set {
                 _nextValue = value;
                 _nextValueUpgradeText.text = $"{_nextValue}";
             }
         }
-
-        public bool IsUnlimitedAmmo {
-            get => _isUnlimitedAmmo;
-            set {
-                _isUnlimitedAmmo = value;
-                _layerUnlimitedAmmo.SetActive(value);
-                _layerValue.SetActive(!value);
-            }
-        }
-
+        
         public GunUpgradeInfoView ViewType {
             get => _viewType;
             set {
