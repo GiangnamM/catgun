@@ -18,16 +18,19 @@ namespace App
             var storeManager = CreateStoreManager(dataManager);
             var sceneManager = new SceneManager();
             var gunSkinManager = new DefaultSkinGunManager(dataManager);
+            var gunUpgradeManager = new DefaultUpgradeGunManager(dataManager);
             var managers = new object[]
             {
                 dataManager,
                 storeManager,
                 sceneManager,
+                gunUpgradeManager,
                 gunSkinManager
             };
             await Task.WhenAll(
                 dataManager.Initialize(),
                 gunSkinManager.Initialize(),
+                gunUpgradeManager.Initialize(),
                 storeManager.Initialize()
             );
             foreach (var manager in managers)
