@@ -11,7 +11,7 @@ namespace App
         [SerializeField] private Canvas _canvas;
 
         [SerializeField] private Transform _btnPlayLayer;
-        
+
         private bool _initialized;
 
         [Inject] private ISceneManager _sceneLoader;
@@ -64,6 +64,8 @@ namespace App
 
         public void OnSettingsButtonPressed()
         {
+            if (Constant.ENABLE_CHEAT_GOLD)
+                _storeManager.AddBalance(StoreItemId.Gold, 200);
             // UniTask.Create(async () => {
             //     var dialog = SettingsDialog.Create(_canvas);
             //     await dialog.Show();

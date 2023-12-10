@@ -81,7 +81,7 @@ namespace App
             }
         }
 
-        private Action<InventoryState, string> OnButtonStateCallBack { get; set; }
+        private Action<InventoryState, GunSkin> OnButtonStateCallBack { get; set; }
 
         public Action<Result> OnDidHide { get; set; }
 
@@ -113,12 +113,6 @@ namespace App
 
         private void Hide(Result result)
         {
-            if (!_isActive)
-            {
-                return;
-            }
-
-            _isActive = false;
             DOTween.Sequence()
                 .Append(_dialogLayer.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack))
                 .AppendCallback(() =>
@@ -173,9 +167,6 @@ namespace App
         }
         //
 
-        private void OnButtonUpgradeCallBack(string upgradeItemId)
-        {
-        }
 
         private void UpdateStateDisplay(InventoryState state)
         {
@@ -194,31 +185,46 @@ namespace App
         }
 
         //To do
-        private void OnStateCallBack(InventoryState state, string id)
+        private void OnStateCallBack(InventoryState state, GunSkin gunSkin)
         {
             switch (state)
             {
                 case InventoryState.Equip:
-                    EquipItem(id);
+                    EquipItem(gunSkin);
                     break;
                 case InventoryState.Equipped:
                     //Return
                     break;
                 case InventoryState.Buy:
-                    OpenUnlockGunDialog(id);
+                    BuyGun(gunSkin);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
         }
 
-        private void EquipItem(string id)
+        private void EquipItem(GunSkin gun)
         {
+            _skinGunManager.CurrentSkin = gun;
+            InitGunItem();
             //To do equip inventory
         }
 
-        private void OpenUnlockGunDialog(string id)
+        private void BuyGun(GunSkin gunSkin)
         {
+            if (Cost <= _storeManager.GetBalance(StoreItemId.Gold))
+            {
+                //Buy success
+                _storeManager.AddBalance(StoreItemId.Gold, -Cost);
+                var skinInfo = _skinGunManager.GetInfo(gunSkin);
+                skinInfo.IsOwned = true;
+                EquipItem(gunSkin);
+            }
+            else
+            {
+                var dialog = InfoDialog.Show(_canvas);
+                dialog.Content = $"Not enough gold";
+            }
         }
 
         private void UpdateItemSelected(GunSkin gun)
@@ -228,9 +234,10 @@ namespace App
                 view.IsSelected = view.GunType == gun;
             }
         }
-        
+
         public void OnStateInventoryButtonPressed()
         {
+            OnButtonStateCallBack?.Invoke(InventoryState, GunSelecting);
         }
 
         public void OnCloseButtonPressed()
@@ -241,6 +248,5 @@ namespace App
         public void OnSettingsButtonPressed()
         {
         }
-        
     }
 }

@@ -104,12 +104,6 @@ namespace App
 
         private void Hide(InfoDialogResult result)
         {
-            if (!_isActive)
-            {
-                return;
-            }
-
-            _isActive = false;
             DOTween.Sequence()
                 .Append(_dialogLayer.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack))
                 .AppendCallback(() =>
