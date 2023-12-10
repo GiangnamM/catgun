@@ -43,11 +43,12 @@ namespace App
 
         [Inject] private IStoreManager _storeManager;
         [Inject] private ISkinGunManager _skinGunManager;
+        [Inject] private IUpgradeGunManager _upgradeGunManager;
         private bool _initialized;
         private InventoryState _inventoryState;
         private Canvas _canvas;
         private bool _isActive;
-        private int _cost;
+        private int _costGun;
         private GunSkin _gunSelecting;
 
         private GunSkin GunSelecting
@@ -60,13 +61,13 @@ namespace App
             }
         }
 
-        private int Cost
+        private int CostGun
         {
-            get => _cost;
+            get => _costGun;
             set
             {
-                _cost = value;
-                _costText.text = $"{_cost}";
+                _costGun = value;
+                _costText.text = $"{_costGun}";
             }
         }
 
@@ -90,6 +91,7 @@ namespace App
             var prefab = Resources.Load<UpgradeDialog>($"Prefabs/UI/{nameof(UpgradeDialog)}");
             var dialog = Instantiate(prefab, canvas.transform, false);
             dialog._canvas = canvas;
+            dialog._upgradeInfoTab.Canvas = canvas;
             return dialog;
         }
 
@@ -156,16 +158,15 @@ namespace App
             var gunInfo = _skinGunManager.GetInfo(gun);
             InventoryState = !gunInfo.IsOwned ? InventoryState.Buy :
                 gunInfo.IsSelected ? InventoryState.Equipped : InventoryState.Equip;
-            Cost = gunInfo.Cost;
+            CostGun = gunInfo.Cost;
             _gunSelector.GunType = gun;
             UpdateItemSelected(gun);
-            UpdateUpgradeInfoTab();
+            _upgradeInfoTab.GunSkin = gun;
         }
 
-        private void UpdateUpgradeInfoTab()
+        private void UpdateUpgradeInfoTab(GunSkin gunSkin)
         {
         }
-        //
 
 
         private void UpdateStateDisplay(InventoryState state)
@@ -212,10 +213,10 @@ namespace App
 
         private void BuyGun(GunSkin gunSkin)
         {
-            if (Cost <= _storeManager.GetBalance(StoreItemId.Gold))
+            if (CostGun <= _storeManager.GetBalance(StoreItemId.Gold))
             {
                 //Buy success
-                _storeManager.AddBalance(StoreItemId.Gold, -Cost);
+                _storeManager.AddBalance(StoreItemId.Gold, -CostGun);
                 var skinInfo = _skinGunManager.GetInfo(gunSkin);
                 skinInfo.IsOwned = true;
                 EquipItem(gunSkin);

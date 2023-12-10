@@ -600,7 +600,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5279273655956392213}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -630,28 +630,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85744c7881429404eafac95ba414072c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _configManager: {fileID: 11400000, guid: eaec69d30e6ad4a9d95e622868ecb823, type: 2}
   _infoGunUpgradeViews:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _layerEnableUpgrades:
-  - {fileID: 2838668758988094301}
-  - {fileID: 0}
-  - {fileID: 6383491473319663848}
-  _layerDefaultValues:
-  - {fileID: 0}
+  - {fileID: 6490975909421240259}
+  - {fileID: 7136803509466689566}
   _layerMaxLayerHide:
-  - {fileID: 0}
   - {fileID: 6383491473319663848}
   - {fileID: 7609206797342346425}
   - {fileID: 4099823788008833135}
   _currentLevelUpgradeText: {fileID: 5867055668981045086}
   _nextLevelUpgradeText: {fileID: 271549789769542225}
   _costText: {fileID: 3335906445177352417}
-  _buttonUpgrade: {fileID: 5301454287315618805}
 --- !u!114 &6133321794395822109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1551,6 +1539,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3884485188054004655, guid: b1bc6d2098d32d741bde71d050b53588, type: 3}
   m_PrefabInstance: {fileID: 251261303371376049}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6490975909421240259 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6442466200058030706, guid: b1bc6d2098d32d741bde71d050b53588, type: 3}
+  m_PrefabInstance: {fileID: 251261303371376049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09ceb655fa5b39448725ffa91506bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4207268164140964460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1794,3 +1793,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3884485188054004655, guid: b1bc6d2098d32d741bde71d050b53588, type: 3}
   m_PrefabInstance: {fileID: 4207268164140964460}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7136803509466689566 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6442466200058030706, guid: b1bc6d2098d32d741bde71d050b53588, type: 3}
+  m_PrefabInstance: {fileID: 4207268164140964460}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09ceb655fa5b39448725ffa91506bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

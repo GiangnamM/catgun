@@ -14,11 +14,11 @@ namespace App
             private readonly SkillConfig _config;
 
             public GunSkin GunSkin => _gunSkin;
-            public int Cost => _config.costs[Math.Min(_manager.GetLevelBooster(_gunSkin), _config.costs.Count - 1)];
-            public int Damage => _config.damages[Math.Min(_manager.GetLevelBooster(_gunSkin), _config.costs.Count - 1)];
+            public int Cost => _config.costs[Math.Min(_manager.GetLevelGun(_gunSkin), _config.costs.Count - 1)];
+            public List<float> Damages => _config.damages;
 
-            public float FireRate =>
-                _config.fireRates[Math.Min(_manager.GetLevelBooster(_gunSkin), _config.costs.Count - 1)];
+            public List<float> FireRates =>
+                _config.fireRates;
 
             public int MaxLevel => _config.costs.Count - 1;
 
@@ -33,7 +33,7 @@ namespace App
         [Serializable]
         private class Data
         {
-            public Dictionary<GunSkin, int> boosters;
+            public Dictionary<GunSkin, int> _guns;
         }
 
         private readonly IDataManager _dataManager;
@@ -56,7 +56,7 @@ namespace App
 
         public class SkillConfig
         {
-            public List<int> damages;
+            public List<float> damages;
             public List<float> fireRates;
             public List<int> costs;
         }
@@ -66,7 +66,7 @@ namespace App
             _data = _dataManager.Get("upgrade_booster_manager",
                 new Data
                 {
-                    boosters = new Dictionary<GunSkin, int>()
+                    _guns = new Dictionary<GunSkin, int>()
                     {
                         { GunSkin.Bazooka, 0 }, { GunSkin.FireBlaster, 0 },
                         { GunSkin.Laser, 0 }
@@ -79,12 +79,12 @@ namespace App
             _dataManager.Set("upgrade_booster_manager", _data);
         }
 
-        public List<GunSkin> AllBoosters => UpgradeGunHelper.AllBoosters();
+        public List<GunSkin> AllGuns => UpgradeGunHelper.AllGuns();
 
 
-        public Dictionary<GunSkin, int> AllBoostersAndCurLevel
+        public Dictionary<GunSkin, int> AllGunsAndCurLevel
         {
-            get => _data.boosters;
+            get => _data._guns;
         }
 
         public IGunInfo GetInfo(GunSkin boosterType)
@@ -93,26 +93,26 @@ namespace App
         }
 
 
-        public void UpgradeBooster(GunSkin type, int level)
+        public void UpgradeGun(GunSkin type, int level)
         {
-            if (_data.boosters.ContainsKey(type))
+            if (_data._guns.ContainsKey(type))
             {
-                _data.boosters[type] += level;
+                _data._guns[type] += level;
             }
             else
             {
-                _data.boosters[type] = level;
+                _data._guns[type] = level;
             }
 
             DispatchEvent(observer => observer.OnLevelBoosterChanged?.Invoke(type));
             SaveData();
         }
 
-        public int GetLevelBooster(GunSkin type)
+        public int GetLevelGun(GunSkin type)
         {
-            if (_data.boosters.ContainsKey(type))
+            if (_data._guns.ContainsKey(type))
             {
-                return _data.boosters[type];
+                return _data._guns[type];
             }
             else
             {

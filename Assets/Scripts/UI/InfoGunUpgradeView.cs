@@ -1,78 +1,80 @@
 using System;
 using System.Linq;
-
 using TMPro;
-
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace App {
-    public enum GunUpgradeInfoView {
+namespace App
+{
+    public enum GunUpgradeInfoView
+    {
         Damage,
         FireRate,
     }
 
-    public class InfoGunUpgradeView : MonoBehaviour {
+    public class InfoGunUpgradeView : MonoBehaviour
+    {
         [Serializable]
-        private class GunAndInfo {
+        private class GunAndInfo
+        {
             public GunUpgradeInfoView infoGunUpgradeType;
             public Sprite icon;
             public string name;
         }
 
-        [SerializeField]
-        private GunAndInfo[] _gunAndInfos;
+        [SerializeField] private GunAndInfo[] _gunAndInfos;
 
-        [SerializeField]
-        private Image _icon;
+        [SerializeField] private Image _icon;
 
-        [SerializeField]
-        private TextMeshProUGUI _nameText;
+        [SerializeField] private TextMeshProUGUI _nameText;
 
-        [SerializeField]
-        private TextMeshProUGUI _currentValueUpgradeText;
+        [SerializeField] private TextMeshProUGUI _currentValueUpgradeText;
 
-        [SerializeField]
-        private TextMeshProUGUI _nextValueUpgradeText;
+        [SerializeField] private TextMeshProUGUI _nextValueUpgradeText;
 
-        [SerializeField]
-        private TextMeshProUGUI _valueText;
-        
         private GunUpgradeInfoView _viewType;
         private float _currentValue;
         private float _nextValue;
         private bool _isUnlimitedAmmo;
-        
-        public float CurrentValue {
+
+        public float CurrentValue
+        {
             get => _currentValue;
-            set {
+            set
+            {
                 _currentValue = value;
                 _currentValueUpgradeText.text = $"{_currentValue}";
-                _valueText.text = $"{_currentValue}";
             }
         }
 
-        public float NextValue {
+        public float NextValue
+        {
             get => _nextValue;
-            set {
+            set
+            {
                 _nextValue = value;
                 _nextValueUpgradeText.text = $"{_nextValue}";
             }
         }
-        
-        public GunUpgradeInfoView ViewType {
+
+        public GunUpgradeInfoView ViewType
+        {
             get => _viewType;
-            set {
+            set
+            {
                 _viewType = value;
                 UpdateView();
             }
         }
 
-        private void UpdateView() {
+        private void UpdateView()
+        {
             var config = _gunAndInfos.FirstOrDefault(p => p.infoGunUpgradeType == _viewType);
-            if (config == null) {
+            if (config == null)
+            {
                 return;
             }
+
             _icon.sprite = config.icon;
             _nameText.text = config.name;
         }

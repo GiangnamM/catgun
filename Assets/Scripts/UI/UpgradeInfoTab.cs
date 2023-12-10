@@ -1,101 +1,147 @@
 using System;
 using System.Collections.Generic;
-
 using Extension;
-
 using TMPro;
-
 using UnityEngine;
 
-namespace App {
-    public class UpgradeInfoTab : MonoBehaviour {
-        private readonly List<GunUpgradeInfoView> _entries = new() {
+namespace App
+{
+    public class UpgradeInfoTab : MonoBehaviour
+    {
+        private readonly List<GunUpgradeInfoView> _entries = new()
+        {
             { GunUpgradeInfoView.Damage },
             { GunUpgradeInfoView.FireRate },
         };
         
-        [SerializeField]
-        private DefaultConfigManager _configManager;
+        [SerializeField] private InfoGunUpgradeView[] _infoGunUpgradeViews;
 
-        [SerializeField]
-        private InfoGunUpgradeView[] _infoGunUpgradeViews;
-        
-        [SerializeField]
-        private GameObject[] _layerMaxLayerHide;
+        [SerializeField] private GameObject[] _layerMaxLayerHide;
 
-        [SerializeField]
-        private TextMeshProUGUI _currentLevelUpgradeText;
+        [SerializeField] private TextMeshProUGUI _currentLevelUpgradeText;
 
-        [SerializeField]
-        private TextMeshProUGUI _nextLevelUpgradeText;
+        [SerializeField] private TextMeshProUGUI _nextLevelUpgradeText;
 
-        [SerializeField]
-        private TextMeshProUGUI _costText;
+        [SerializeField] private TextMeshProUGUI _costText;
 
-        [SerializeField]
-        private GameObject _buttonUpgrade;
-
-        private bool _enableUpgrade;
+        [Inject] private IUpgradeGunManager _upgradeGunManager;
+        [Inject] private IStoreManager _storeManager;
         private int _level;
         private bool _initialized;
-        private string _id;
         private int _cost;
         private bool _isUnLock;
         private bool _isMaxLevel;
+        private GunSkin _gunSkin;
 
-        public int Cost {
+        public Canvas Canvas { get; set; }
+
+        public GunSkin GunSkin
+        {
+            get => _gunSkin;
+            set
+            {
+                _gunSkin = value;
+                Initialize();
+                UpdateView(value);
+            }
+        }
+
+        public int Cost
+        {
             get => _cost;
-            set {
+            set
+            {
                 _cost = value;
                 _costText.text = $"{value}";
             }
         }
-        
+
         public Action OnUpgradeButtonCallback { get; set; }
-        
-        public bool IsMaxLevel {
+
+        public bool IsMaxLevel
+        {
             get => _isMaxLevel;
-            set {
+            set
+            {
                 _isMaxLevel = value;
-                foreach (var layer in _layerMaxLayerHide) {
+                foreach (var layer in _layerMaxLayerHide)
+                {
                     layer.SetActive(!value);
                 }
             }
         }
 
-        public int Level {
+        public int Level
+        {
             get => _level;
-            set {
+            set
+            {
                 _level = value;
                 _currentLevelUpgradeText.text = $"Lv {value + 1}";
                 _nextLevelUpgradeText.text = $"Lv {value + 2}";
             }
         }
 
-        private void Awake() {
+        private void Awake()
+        {
             Initialize();
         }
 
-        private void Initialize() {
-            if (_initialized) {
+        private void Initialize()
+        {
+            if (_initialized)
+            {
                 return;
             }
-            _initialized = true;
+
             ServiceLocator.Instance.ResolveInjection(this);
+            _initialized = true;
         }
 
-        private void UpdateView() {
-            
-            for (var i = 0; i < _infoGunUpgradeViews.Length; i++) {
+        private void UpdateView(GunSkin gunSkin)
+        {
+            var gunUpgradeItemInfo = _upgradeGunManager.GetInfo(gunSkin);
+            var level = _upgradeGunManager.GetLevelGun(gunSkin);
+            var maxLevel = gunUpgradeItemInfo.MaxLevel;
+            var cost = gunUpgradeItemInfo.Cost;
+            Level = level;
+            IsMaxLevel = level == maxLevel;
+            Cost = cost;
+            OnUpgradeButtonCallback = () =>
+            {
+                if (cost <= _storeManager.GetBalance(StoreItemId.Gold))
+                {
+                    //Upgrade Success
+                    _storeManager.AddBalance(StoreItemId.Gold, -cost);
+                    _upgradeGunManager.UpgradeGun(gunSkin, 1);
+                    UpdateView(gunSkin);
+                }
+                else
+                {
+                    var dialog = InfoDialog.Show(Canvas);
+                    dialog.Content = $"Not enough gold";
+                }
+            };
+            // Damage, FireRate
+            var configs = new List<List<float>>()
+            {
+                gunUpgradeItemInfo.Damages,
+                gunUpgradeItemInfo.FireRates,
+            };
+            for (var i = 0; i < _infoGunUpgradeViews.Length; i++)
+            {
                 var type = _entries[i];
                 var item = _infoGunUpgradeViews[i];
+                var config = configs[i];
+                var gunUpgradeInfo = _upgradeGunManager.GetInfo(gunSkin);
                 item.ViewType = type;
-                // item.CurrentValue = 
-                
+                item.CurrentValue = config[level];
+                item.NextValue = config[level + 1];
             }
         }
 
-        public void OnButtonUpgradePressed() {
+        public void OnButtonUpgradePressed()
+        {
             OnUpgradeButtonCallback?.Invoke();
         }
     }
