@@ -338,6 +338,9 @@ MonoBehaviour:
   _nameText: {fileID: 466663139996441095}
   _currentValueUpgradeText: {fileID: 322771803028669126}
   _nextValueUpgradeText: {fileID: 2019910423345398140}
+  _layerOffWhenMaxLevel:
+  - {fileID: 997567100445343624}
+  - {fileID: 8438430034347595599}
 --- !u!1 &4744855101488367750
 GameObject:
   m_ObjectHideFlags: 0

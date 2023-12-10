@@ -9,14 +9,20 @@ namespace App
     {
         public GunSkin gunSkin;
         public List<float> damage;
-        public List<int> bullet;
+        public List<float> fireRate;
+    }
+
+    [Serializable]
+    public class BaseGun
+    {
+        public GunSkin gunSkin;
+        public float damage;
+        public float fireRate;
     }
 
     [Service(typeof(IConfigManager))]
     public interface IConfigManager
     {
-        List<UpgradeGun> UpgradeGuns { get; }
-
-        IDictionary<GunSkin, (List<float>, List<int>)> AllUpgradeGunTuples { get; }
+        IDictionary<GunSkin, (List<float>, List<float>)> AllUpgradeGunTuples { get; }
     }
 }

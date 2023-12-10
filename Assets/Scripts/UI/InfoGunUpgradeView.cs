@@ -32,10 +32,13 @@ namespace App
 
         [SerializeField] private TextMeshProUGUI _nextValueUpgradeText;
 
+        [SerializeField] private GameObject[] _layerOffWhenMaxLevel;
+
         private GunUpgradeInfoView _viewType;
         private float _currentValue;
         private float _nextValue;
         private bool _isUnlimitedAmmo;
+        private bool _isMaxLevel;
 
         public float CurrentValue
         {
@@ -44,6 +47,19 @@ namespace App
             {
                 _currentValue = value;
                 _currentValueUpgradeText.text = $"{_currentValue}";
+            }
+        }
+
+        public bool IsMaxLevel
+        {
+            get => _isMaxLevel;
+            set
+            {
+                _isMaxLevel = value;
+                foreach (var layer in _layerOffWhenMaxLevel)
+                {
+                    layer.SetActive(!value);
+                }
             }
         }
 

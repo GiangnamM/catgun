@@ -13,7 +13,9 @@ namespace App
             { GunUpgradeInfoView.Damage },
             { GunUpgradeInfoView.FireRate },
         };
-        
+
+        [SerializeField] private DefaultConfigManager _configManager;
+
         [SerializeField] private InfoGunUpgradeView[] _infoGunUpgradeViews;
 
         [SerializeField] private GameObject[] _layerMaxLayerHide;
@@ -125,18 +127,25 @@ namespace App
             // Damage, FireRate
             var configs = new List<List<float>>()
             {
-                gunUpgradeItemInfo.Damages,
-                gunUpgradeItemInfo.FireRates,
+                _configManager.AllUpgradeGunTuples[gunSkin].Item1,
+                _configManager.AllUpgradeGunTuples[gunSkin].Item2,
+            };
+            var baseConfigs = new[]
+            {
+                _configManager.GunBaseInfo[gunSkin].Item1,
+                _configManager.GunBaseInfo[gunSkin].Item2,
             };
             for (var i = 0; i < _infoGunUpgradeViews.Length; i++)
             {
                 var type = _entries[i];
                 var item = _infoGunUpgradeViews[i];
                 var config = configs[i];
-                var gunUpgradeInfo = _upgradeGunManager.GetInfo(gunSkin);
+                var baseConfig = baseConfigs[i];
                 item.ViewType = type;
-                item.CurrentValue = config[level];
-                item.NextValue = config[level + 1];
+                item.CurrentValue = config[level] + baseConfig;
+                item.IsMaxLevel = maxLevel == level;
+                if (maxLevel == level) continue;
+                item.NextValue = config[level + 1] + baseConfig;
             }
         }
 

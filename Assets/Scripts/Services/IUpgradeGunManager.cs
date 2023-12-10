@@ -13,8 +13,6 @@ namespace App
     {
         GunSkin GunSkin { get; }
         int Cost { get; }
-        List<float> Damages { get; }
-        List<float> FireRates { get; }
         int MaxLevel { get; }
     }
 
