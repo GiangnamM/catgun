@@ -58,10 +58,10 @@ namespace App {
         }
 
         private void LoadData() {
-            _data = _dataManager.Get("skin_data",
+            _data = _dataManager.Get("skin_gun_data",
                 new Data {
-                    currentGunSkin = GunSkin.M4A1,
-                    ownedSkins = new List<GunSkin>() {GunSkin.M4A1,},
+                    currentGunSkin = GunSkin.Bazooka,
+                    ownedSkins = new List<GunSkin>() {GunSkin.Bazooka,},
                 });
         }
 
