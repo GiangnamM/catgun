@@ -16,16 +16,18 @@ namespace App
         {
             var dataManager = new JsonDataManager();
             var storeManager = CreateStoreManager(dataManager);
-
-            // var characterSkinManager = new DefaultCharacterSkinManager(dataManager);
+            var sceneManager = new SceneManager();
+            var gunSkinManager = new DefaultSkinGunManager(dataManager);
             var managers = new object[]
             {
                 dataManager,
                 storeManager,
-                // characterSkinManager,
+                sceneManager,
+                gunSkinManager
             };
             await Task.WhenAll(
                 dataManager.Initialize(),
+                gunSkinManager.Initialize(),
                 storeManager.Initialize()
             );
             foreach (var manager in managers)
