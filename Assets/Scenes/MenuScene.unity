@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 217262343}
   - component: {fileID: 217262342}
   m_Layer: 0
-  m_Name: ShopButton
+  m_Name: UpgradeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -313,7 +313,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1153399863}
         m_TargetAssemblyTypeName: App.MenuScene, Assembly-CSharp
-        m_MethodName: OnShopButtonPressed
+        m_MethodName: OnUpgradeButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -927,7 +927,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvas: {fileID: 1872399554}
   _btnPlayLayer: {fileID: 1457748336}
-  _btnWatchAdsLayer: {fileID: 0}
   _skinWarningLayer: {fileID: 355243927}
   _rewardText: {fileID: 0}
 --- !u!1 &1195364905
@@ -1462,7 +1461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1835370351
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1479,9 +1478,9 @@ RectTransform:
   m_Father: {fileID: 1365244072}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: -191.66666}
   m_SizeDelta: {x: 160, y: 166.66667}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1835370352

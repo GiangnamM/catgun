@@ -3,7 +3,6 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using DG.Tweening;
 using Extension;
-using TMPro;
 
 namespace App
 {
@@ -12,18 +11,11 @@ namespace App
         [SerializeField] private Canvas _canvas;
 
         [SerializeField] private Transform _btnPlayLayer;
-
-        [SerializeField] private Transform _btnWatchAdsLayer;
-
-        [SerializeField] private Transform _skinWarningLayer;
-
-        [SerializeField] private TextMeshProUGUI _rewardText;
-
+        
         private bool _initialized;
 
         [Inject] private ISceneManager _sceneLoader;
 
-        // [Inject] private ILevelService _levelService;
         [Inject] private IStoreManager _storeManager;
 
 
@@ -43,22 +35,20 @@ namespace App
         private void Awake()
         {
             Initialize();
-            // _tweens = new List<Tween>();
-            // var tween = DOTween.Sequence()
-            //     .Append(_btnPlayLayer.DOScale(new Vector3(0.9f, 0.9f, 1f), 1f)).SetEase(Ease.OutSine)
-            //     .Append(_btnPlayLayer.DOScale(Vector3.one, 1f)).SetEase(Ease.InSine)
-            //     .SetLoops(-1);
-            // _tweens.Add(tween);
-            // tween = DOTween.Sequence()
-            //     .Append(_btnWatchAdsLayer.DOScale(new Vector3(0.9f, 0.9f, 1f), 1f)).SetEase(Ease.OutSine)
-            //     .Append(_btnWatchAdsLayer.DOScale(Vector3.one, 1f)).SetEase(Ease.InSine)
-            //     .SetLoops(-1);
-            // _tweens.Add(tween);
-            // AnimWarningSkin();
+            _tweens = new List<Tween>();
+            var tween = DOTween.Sequence()
+                .Append(_btnPlayLayer.DOScale(new Vector3(0.9f, 0.9f, 1f), 1f)).SetEase(Ease.OutSine)
+                .Append(_btnPlayLayer.DOScale(Vector3.one, 1f)).SetEase(Ease.InSine)
+                .SetLoops(-1);
+            _tweens.Add(tween);
         }
 
         private void OnDestroy()
         {
+            foreach (var tween in _tweens)
+            {
+                tween?.Kill();
+            }
         }
 
 
@@ -74,47 +64,16 @@ namespace App
 
         public void OnSettingsButtonPressed()
         {
-            // _logManager.Log();
-            // _analyticsManager.LogEvent(new ClickEvent {
-            //     Button = "settings",
-            // });
-            // _audioManager.PlaySound(Audio.Button);
             // UniTask.Create(async () => {
             //     var dialog = SettingsDialog.Create(_canvas);
             //     await dialog.Show();
             // });
         }
 
-        public void OnBonusButtonPressed()
-        {
-            // _logManager.Log();
-            // _analyticsManager.LogEvent(new ClickEvent {
-            //     Button = "bonus",
-            // });
-            // _audioManager.PlaySound(Audio.Button);
-            // UniTask.Create(async () => {
-            //     var (result, message) = await _adsManager.ShowRewardedAd();
-            //     if (result == AdResult.Completed) {
-            //         _storeManager.AddBalance(StoreItemId.Gold, Constant.REWARD_WATCH_ADS);
-            //     } else {
-            //         var dialog = InfoDialog.Create(_canvas);
-            //         dialog.Content = message;
-            //         await dialog.Show();
-            //     }
-            // });
-        }
 
-        public void OnShopButtonPressed()
+        public void OnUpgradeButtonPressed()
         {
-            // _audioManager.PlaySound(Audio.Button);
-            // _analyticsManager.LogEvent(new ClickEvent {
-            //     Button = "shop",
-            // });
-            // UniTask.Create(async () => {
-            //     var dialog = ShopDialog.Create(_canvas);
-            //     dialog.SelectedTab = ShopDialog.TabType.Gold;
-            //     await dialog.Show();
-            // });
+            var dialog = UpgradeDialog.Show(_canvas);
         }
     }
 }

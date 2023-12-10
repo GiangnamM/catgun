@@ -12,12 +12,12 @@ namespace App {
         private bool _initialized;
         private GunSkin _gunType;
 
-        private Dictionary<GunSkin, string> _configAnimation = new Dictionary<GunSkin, string> {
-            // { GunType.Ak47, "GUN 1" },
-            // { GunType.Bazooka, "GUN 2" },
-            // { GunType.M4A1, "GUN 3" },
-            // { GunType.FireBlaster, "GUN 4" },
-            // { GunType.Laser, "GUN 5" },
+        private Dictionary<GunSkin, string> _configAnimation = new()
+        {
+            { GunSkin.Bazooka, "GUN 2" },
+            { GunSkin.M4A1, "GUN 3" },
+            { GunSkin.FireBlaster, "GUN 4" },
+            { GunSkin.Laser, "GUN 5" },
 
         };
 
