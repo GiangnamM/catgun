@@ -4,11 +4,9 @@ namespace App
 {
     public class Character : MonoBehaviour
     {
-        public static Character instance;
         private const int MaxJump = 1;
         private const float MoveSpeed = 6.1f;
         private const float JumpPower = 14f;
-        // private const float CharHeight = 2f;
 
         [SerializeField] private CharacterRenderer _characterRenderer;
 
@@ -68,14 +66,7 @@ namespace App
 
         private void Awake()
         {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            
         }
 
         void Start()
@@ -146,11 +137,7 @@ namespace App
             // for (var i = 0; i < _gun.Config.Angles.Length; i++) {
             //     var angle = _gun.Config.Angles[i];
             //     var startY = _gun.Config.StartY[i];
-            //     if (gunType == BoosterType.Gun4) {
-            //         SpawnLazeBullet(angle);
-            //     } else {
             //         SpawnNormalBullet(gunType, angle, 0f, startY);
-            //     }
             // }
         }
 

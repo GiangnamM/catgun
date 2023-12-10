@@ -15,11 +15,7 @@ namespace App
 
             public GunSkin GunSkin => _gunSkin;
             public int Cost => _config.costs[Math.Min(_manager.GetLevelGun(_gunSkin), _config.costs.Count - 1)];
-            public List<float> Damages => _config.damages;
-
-            public List<float> FireRates =>
-                _config.fireRates;
-
+            
             public int MaxLevel => _config.costs.Count - 1;
 
             public DefaultGunInfo(DefaultUpgradeGunManager manager, GunSkin gunSkin)

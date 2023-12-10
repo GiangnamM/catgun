@@ -23,6 +23,7 @@ namespace App
     [Service(typeof(IConfigManager))]
     public interface IConfigManager
     {
+        IDictionary<GunSkin, (float, float)> GunBaseInfo { get; }
         IDictionary<GunSkin, (List<float>, List<float>)> AllUpgradeGunTuples { get; }
     }
 }
