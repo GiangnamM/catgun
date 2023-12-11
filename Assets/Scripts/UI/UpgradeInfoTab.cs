@@ -125,7 +125,7 @@ namespace App
                 }
             };
             // Damage, FireRate
-            var configs = new List<List<float>>()
+            var upgradeConfigs = new List<List<float>>()
             {
                 _configManager.AllUpgradeGunTuples[gunSkin].Item1,
                 _configManager.AllUpgradeGunTuples[gunSkin].Item2,
@@ -139,14 +139,25 @@ namespace App
             {
                 var type = _entries[i];
                 var item = _infoGunUpgradeViews[i];
-                var config = configs[i];
+                var upgradeConfig = upgradeConfigs[i];
                 var baseConfig = baseConfigs[i];
                 item.ViewType = type;
-                item.CurrentValue = config[level] + baseConfig;
+                item.CurrentValue = ValueAtIndex(upgradeConfig, level) + baseConfig;
                 item.IsMaxLevel = maxLevel == level;
                 if (maxLevel == level) continue;
-                item.NextValue = config[level + 1] + baseConfig;
+                item.NextValue = ValueAtIndex(upgradeConfig, level + 1) + baseConfig;
             }
+        }
+
+        private float ValueAtIndex(List<float> arr, int index)
+        {
+            float sum = 0;
+            for (int i = 0; i <= index; i++)
+            {
+                sum += arr[i];
+            }
+
+            return sum;
         }
 
         public void OnButtonUpgradePressed()
