@@ -19,7 +19,7 @@ namespace App
                 await ServiceUtils.Initialize();
                 ServiceLocator.Instance.ResolveInjection(this);
                 // _audioManager.PlayMusic(Audio.Menu);
-                await Task.Delay(3000);
+                await Task.Delay(1500);
                 await TransitionLayer.Fade(0.3f,
                     async () => await _sceneManager.LoadScene<MenuScene>(nameof(MenuScene)));
             });
