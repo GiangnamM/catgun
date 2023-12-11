@@ -117,11 +117,11 @@ namespace App
 
         private void UpdateGunType()
         {
-            _skinAndName[AnimState.IDLE] = $"GUN 01/IDLE";
-            _skinAndName[AnimState.MOVE] = $"GUN 01/RUN";
-            _skinAndName[AnimState.JUMP] = $"GUN 01/JUMP";
-            _skinAndName[AnimState.FIRE] = $"GUN 01/ATTACK GUN";
-            _skinAndName[AnimState.DIE] = $"GUN 01/DIE GUN";
+            _skinAndName[AnimState.IDLE] = $"GUN 02/IDLE";
+            _skinAndName[AnimState.MOVE] = $"GUN 02/RUN";
+            _skinAndName[AnimState.JUMP] = $"GUN 02/JUMP";
+            _skinAndName[AnimState.FIRE] = $"GUN 02/ATTACK GUN";
+            _skinAndName[AnimState.DIE] = $"GUN 02/DIE GUN";
         }
 
         private void Jump()

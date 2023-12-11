@@ -1,3 +1,4 @@
+using Extension;
 using UnityEngine;
 
 namespace App
@@ -7,19 +8,27 @@ namespace App
         private const int MaxJump = 1;
         private const float MoveSpeed = 6.1f;
         private const float JumpPower = 14f;
+        private const float BulletSpeed = 15f;
 
         [SerializeField] private CharacterRenderer _characterRenderer;
 
+        [SerializeField] private DefaultConfigManager _configManager;
+
+        [SerializeField] private Bullet _bullet;
+
+        [Inject] private ISkinGunManager _skinGunManager;
         private Rigidbody2D _body;
         private Collider2D _collider;
         private int _jumpCount;
         private bool _isGrounded;
         private Vector2 _direction;
         private Vector2 _lastDirection;
-        private bool _invincible;
         private float _horizontal;
         private float _vertical;
         private bool _isDead;
+        private Gun _gun;
+        private GunSkin _gunSkin;
+        private bool _initialized;
 
         public bool IsGrounded
         {
@@ -62,17 +71,40 @@ namespace App
             }
         }
 
+        public GunSkin GunSkin
+        {
+            get => _gunSkin;
+            set
+            {
+                _gunSkin = value;
+                Initialize();
+                UpdateGunConfig();
+            }
+        }
+
+
         public bool IsStunning { get; private set; }
 
         private void Awake()
         {
-            
+            Initialize();
+            GunSkin = GunSkin.Bazooka;
+        }
+
+        private void Initialize()
+        {
+            if (_initialized) return;
+            _initialized = true;
+            ServiceLocator.Instance.ResolveInjection(this);
+            UpdateSkin();
+            _gun = GetComponent<Gun>();
         }
 
         void Start()
         {
             _body = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
+            _lastDirection = Vector2.right;
         }
 
         // Update is called once per frame
@@ -80,6 +112,11 @@ namespace App
         {
             _horizontal = Input.GetAxisRaw("Horizontal");
             _vertical = Input.GetAxisRaw("Vertical");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Fire();
+            }
+
             if (Mathf.Abs(_body.velocity.y) < 0.1f && !IsGrounded)
             {
                 IsGrounded = IsOnGround();
@@ -90,6 +127,11 @@ namespace App
         {
             if (_isDead) return;
             Direction = new Vector2(_horizontal, _vertical);
+        }
+
+        private void UpdateSkin()
+        {
+            
         }
 
         private void UpdateDirection()
@@ -128,17 +170,30 @@ namespace App
 
         private void Fire()
         {
-            // var gunType = GunType;
-            // if (!_gun.Fire()) {
-            //     return;
-            // }
-            // _characterRenderer.Fire();
-            // PlayGunSound(gunType);
-            // for (var i = 0; i < _gun.Config.Angles.Length; i++) {
-            //     var angle = _gun.Config.Angles[i];
-            //     var startY = _gun.Config.StartY[i];
-            //         SpawnNormalBullet(gunType, angle, 0f, startY);
-            // }
+            var gunType = GunSkin;
+            if (!_gun.Fire())
+            {
+                return;
+            }
+
+            _characterRenderer.Fire();
+            SpawnNormalBullet(gunType);
+        }
+
+        private void UpdateGunConfig()
+        {
+            _gun.FireRate = _configManager.GunBaseInfo[_gunSkin].Item2;
+        }
+
+        private void SpawnNormalBullet(GunSkin gunType, float startX = 0f, float startY = 0f)
+        {
+            var bullet = Instantiate(_bullet);
+            var trans = bullet.transform;
+            trans.localPosition = _gun.GunPos + new Vector3(startX, startY, -0.01f);
+            bullet.Direction = _lastDirection;
+            bullet.Speed = BulletSpeed;
+            bullet.Damage = _configManager.GunBaseInfo[gunType].Item1;
+            bullet.Skin = gunType;
         }
 
         public void Completed()

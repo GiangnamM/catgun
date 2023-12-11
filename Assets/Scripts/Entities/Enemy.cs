@@ -25,12 +25,15 @@ namespace App
         private void Awake()
         {
             _body = GetComponent<Rigidbody2D>();
-            Health = 200;
+            var defaultHealth = 200;
+            _healthBar.MaxHealth = defaultHealth;
+            Health = defaultHealth;
         }
 
         private void Update()
         {
-            if (gameObject.transform.position.x < -5f) {
+            if (gameObject.transform.position.x < -5f)
+            {
                 Destroy(gameObject);
             }
         }
@@ -41,7 +44,6 @@ namespace App
             {
                 Debug.Log("Collider With character");
             }
-            
         }
 
         public void TakeDamage(float damage, Vector2 force)
@@ -51,6 +53,7 @@ namespace App
             if (Health <= 0)
             {
                 _body.velocity = force;
+                gameObject.layer = LayerMask.NameToLayer("FlyBody");
             }
         }
 

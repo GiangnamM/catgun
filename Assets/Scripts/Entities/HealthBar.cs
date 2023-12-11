@@ -61,7 +61,6 @@ namespace App
         private void Awake()
         {
             Initialize();
-            _healthWidth = _healthRenderer.size.x;
             UpdateDisplay();
             Hide();
         }
@@ -73,6 +72,7 @@ namespace App
                 return;
             }
 
+            _healthWidth = _healthRenderer.size.x;
             _initialized = true;
         }
 
