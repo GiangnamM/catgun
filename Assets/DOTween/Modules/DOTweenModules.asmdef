@@ -1,0 +1,13 @@
+{
+	"name": "DOTweenModules",
+    "references": [
+        "DOTween"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.physics",
+            "expression": "",
+            "define": "DOTWEEN_UNITY_PHYSICS"
+        }
+    ]
+}
