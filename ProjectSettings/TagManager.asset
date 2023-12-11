@@ -15,8 +15,8 @@ TagManager:
   - 
   - CharacterProjectile
   - ColliderWithCharacter
-  - 
-  - 
+  - Enemy
+  - FlyBody
   - 
   - 
   - 
