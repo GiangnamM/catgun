@@ -49,11 +49,8 @@ namespace App {
         
         private int _entityLocker;
         private readonly Queue<Entity> _toBeRemovedEntities;
-
-        private float _accumulatedTime;
-
+        
         private readonly bool _usingCache;
-
         public Transform View { get; }
 
         public List<Entity> Entities { get; }
@@ -66,7 +63,6 @@ namespace App {
             _toBeRemovedEntities = new Queue<Entity>();
 
             _entityLocker = 0;
-            _accumulatedTime = 0;
             View = view;
             Entities = new List<Entity>();
         }
