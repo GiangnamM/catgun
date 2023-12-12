@@ -41,6 +41,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a8458e22d1fc9944faa90bd977d52cfe, type: 3}
   - {fileID: 21300000, guid: f5922eb75c21233458cd1753c473c104, type: 3}
   - {fileID: 21300000, guid: 347bc4982344b404ca510ce94cbbb93f, type: 3}
+  - {fileID: 21300000, guid: 88b79ddbb9c71814c98c7e68d47cdf93, type: 3}
   - {fileID: 21300000, guid: 1a1de5dd0d3b1254ea2ab9159ae796e3, type: 3}
   - {fileID: 21300000, guid: 8183e68e028d7dd46bf42af54d447091, type: 3}
   - {fileID: 21300000, guid: 9a4d1adf503eb6e4bb8cb983d25ea97b, type: 3}
@@ -48,6 +49,7 @@ SpriteAtlas:
   - btn-setting
   - crossbar
   - B
+  - btn-pause
   - btn-plus
   - icon-gem
   - icon-coin

@@ -50,6 +50,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 220eefd23fa672149b4731077f0776d9, type: 3}
   - {fileID: 21300000, guid: e3eeff135f6cc9f408e6d6669d555bcb, type: 3}
   - {fileID: 21300000, guid: 02c47e83fb4c84b4d8f54297a592b2c3, type: 3}
+  - {fileID: 21300000, guid: 98061524ff033e548a644cba795237c5, type: 3}
+  - {fileID: 21300000, guid: fb14d1f43a4afc24ea2325bbaa33d29e, type: 3}
+  - {fileID: 21300000, guid: c2198015dc7ae2d4f885376cb20e4289, type: 3}
   - {fileID: 21300000, guid: db1f8635c926cc94299cce0ec0fe9347, type: 3}
   - {fileID: 21300000, guid: f4f30755de9e983448df76d318c11ca4, type: 3}
   - {fileID: 21300000, guid: f684ff6633cdd3b409ed1a4a3fbeae81, type: 3}
@@ -64,6 +67,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e7b9e7baa91efaa4c853007581267d5f, type: 3}
   - {fileID: 21300000, guid: 66478c0b296168944a47c9dbf7304e19, type: 3}
   - {fileID: 21300000, guid: 12326a8b03e7bb940b47db2769cf7e49, type: 3}
+  - {fileID: 21300000, guid: ac386d9bfadbc7c4ba497befd10e4602, type: 3}
   - {fileID: 21300000, guid: 4c22c5ebae0e3bd40ae021343f31b1e7, type: 3}
   - {fileID: 21300000, guid: 8be3bedc04752fd47a714d620e7f75e0, type: 3}
   - {fileID: 21300000, guid: 33f7fa7ea0ee14949a31421a4ddff7cd, type: 3}
@@ -83,6 +87,9 @@ SpriteAtlas:
   - arrow
   - gun-bazooka
   - pedestal
+  - line
+  - icon-retry
+  - Closed
   - gun-laser
   - icon-firerate
   - Infinity
@@ -97,6 +104,7 @@ SpriteAtlas:
   - crossbar-green
   - btn-back
   - Shadow-Upgrade
+  - upgrade-weapon
   - gun-fireblaster
   - bar-tap-pink
   - bar-tap-orange
