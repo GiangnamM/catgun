@@ -208,7 +208,6 @@ namespace App
         {
             _skinGunManager.CurrentSkin = gun;
             GunSelecting = gun;
-            //To do equip inventory
         }
 
         private void BuyGun(GunSkin gunSkin)

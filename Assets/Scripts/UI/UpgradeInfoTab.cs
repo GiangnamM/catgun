@@ -46,6 +46,7 @@ namespace App
             set
             {
                 _enableUpgrade = value;
+                _layerUpgrade.SetActive(_enableUpgrade);
             }
         }
         
