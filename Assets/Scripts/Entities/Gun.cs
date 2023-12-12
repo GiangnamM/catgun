@@ -72,7 +72,6 @@ namespace App
             {
                 return false;
             }
-            Debug.Log("shoot");
             _elapsed = 0;
             _canFire = false;
             return true;

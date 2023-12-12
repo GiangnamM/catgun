@@ -49,6 +49,11 @@ namespace Extension
                 pool.inactiveObjects.Add(obj);
             }
         }
+
+        public static void ReturnObject(GameObject obj)
+        {
+            obj.SetActive(false);
+        }
     }
 
     public class PoolObjectInfo

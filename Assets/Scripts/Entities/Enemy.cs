@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using Extension;
 using UnityEngine;
 
 namespace App
@@ -34,7 +35,7 @@ namespace App
         {
             if (gameObject.transform.position.x < -5f)
             {
-                Destroy(gameObject);
+                PoolManager.ReturnObject(gameObject);
             }
         }
 
@@ -42,7 +43,7 @@ namespace App
         {
             if (collider.TryGetComponent<Character>(out var c))
             {
-                Debug.Log("Collider With character");
+                c.TakeDamage(1);
             }
         }
 

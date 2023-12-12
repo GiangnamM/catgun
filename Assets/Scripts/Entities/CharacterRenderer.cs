@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using App;
+using DG.Tweening;
 using UnityEngine;
 
 namespace App
@@ -28,8 +29,19 @@ namespace App
         private Vector2 _direction;
         private AnimState _animState;
         private IDictionary<AnimState, string> _skinAndName;
-        private bool _isSmile;
         private string _skinName;
+        private GunSkin _gun;
+        private Tween _tween;
+
+        public GunSkin Gun
+        {
+            get => _gun;
+            set
+            {
+                _gun = value;
+                UpdateGunType();
+            }
+        }
 
         public Vector2 Direction
         {
@@ -62,16 +74,6 @@ namespace App
             Initialize();
         }
 
-        // Start is called before the first frame update
-        void Start()
-        {
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        }
-
         private void Initialize()
         {
             if (_initialized)
@@ -89,7 +91,11 @@ namespace App
                 { AnimState.FIRE, "" },
                 { AnimState.DIE, "" },
             };
-            UpdateGunType();
+        }
+
+        private void OnDestroy()
+        {
+            _tween?.Kill();
         }
 
         private void AnimStateChanged()
@@ -117,11 +123,20 @@ namespace App
 
         private void UpdateGunType()
         {
-            _skinAndName[AnimState.IDLE] = $"GUN 02/IDLE";
-            _skinAndName[AnimState.MOVE] = $"GUN 02/RUN";
-            _skinAndName[AnimState.JUMP] = $"GUN 02/JUMP";
-            _skinAndName[AnimState.FIRE] = $"GUN 02/ATTACK GUN";
-            _skinAndName[AnimState.DIE] = $"GUN 02/DIE GUN";
+            var gun = _gun switch
+            {
+                GunSkin.M4A1 => null,
+                GunSkin.Bazooka => "Gun 04",
+                GunSkin.FireBlaster => "GUN 03",
+                GunSkin.Laser => "GUN 05",
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            _skinAndName[AnimState.IDLE] = $"{gun}/IDLE";
+            _skinAndName[AnimState.MOVE] = $"{gun}/RUN";
+            _skinAndName[AnimState.JUMP] = $"{gun}/JUMP";
+            _skinAndName[AnimState.FIRE] = $"{gun}/ATTACK GUN";
+            _skinAndName[AnimState.DIE] = $"{gun}/DIE GUN";
+            State = AnimState.IDLE;
         }
 
         private void Jump()
@@ -159,7 +174,31 @@ namespace App
                 State = AnimState.JUMP;
                 return;
             }
+
             State = _direction.x != 0 ? AnimState.MOVE : AnimState.IDLE;
+        }
+
+        public void Hit()
+        {
+            _tween?.Kill();
+            _tween = DOTween.Sequence()
+                .AppendCallback(() =>
+                {
+                    _animHelper.Animation.Skeleton.A = .3f;
+                    _animHelper.Animation.Skeleton.R = .7f;
+                    _animHelper.Animation.Skeleton.G = .3f;
+                    _animHelper.Animation.Skeleton.B = .3f;
+                })
+                .AppendInterval(.14f)
+                .AppendCallback(() =>
+                {
+                    _animHelper.Animation.Skeleton.A = 1f;
+                    _animHelper.Animation.Skeleton.R = 1f;
+                    _animHelper.Animation.Skeleton.G = 1f;
+                    _animHelper.Animation.Skeleton.B = 1f;
+                })
+                .AppendInterval(.14f)
+                .SetLoops(5);
         }
     }
 }

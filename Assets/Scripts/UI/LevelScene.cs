@@ -9,6 +9,8 @@ namespace App
     {
         [SerializeField] private DefaultConfigManager _configManager;
         [SerializeField] private Canvas _canvas;
+        private Character _character;
+
         [Inject] private ISceneManager _sceneManager;
 
         private bool _initialized;
@@ -24,11 +26,25 @@ namespace App
             if (_initialized) return;
             ServiceLocator.Instance.ResolveInjection(this);
             _initialized = true;
+            _character = FindObjectOfType<Character>();
+            _character.OnStateCallBack = (result) =>
+            {
+                switch (result)
+                {
+                    case State.Fail:
+                        ShowLevelFailDialog();
+                        break;
+                    case State.Complete:
+                        ReloadLevel();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(result), result, null);
+                }
+            };
         }
 
         public void OnPauseButtonPressed()
         {
-            Time.timeScale = 0;
             var dialog = PauseDialog.Show(_canvas);
             dialog.OnDidHide = (result) =>
             {
@@ -42,6 +58,26 @@ namespace App
                     case PauseDialogResult.GoToMenu:
                         BackToMenu();
                         break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(result), result, null);
+                }
+            };
+        }
+
+        private void ShowLevelFailDialog()
+        {
+            var dialog = LevelFailedDialog.Show(_canvas);
+            dialog.OnDidHide = (result) =>
+            {
+                switch (result)
+                {
+                    case LevelFailedDialogResult.EndLevel:
+                        BackToMenu();
+                        break;
+                    case LevelFailedDialogResult.RetryLevel:
+                        ReloadLevel();
+                        break;
+                    
                     default:
                         throw new ArgumentOutOfRangeException(nameof(result), result, null);
                 }

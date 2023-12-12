@@ -1,20 +1,29 @@
+using System;
 using Extension;
 using UnityEngine;
 
 namespace App
 {
+    public enum State
+    {
+        Fail,
+        Complete,
+    }
+
     public class Character : MonoBehaviour
     {
         private const int MaxJump = 1;
         private const float MoveSpeed = 5f;
         private const float JumpPower = 14f;
         private const float BulletSpeed = 15f;
+        private const float InvincibleTime = 2f;
 
         [SerializeField] private CharacterRenderer _characterRenderer;
 
         [SerializeField] private DefaultConfigManager _configManager;
 
         [SerializeField] private GameObject _bullet;
+        [SerializeField] private HealthBar _healthBar;
 
         [Inject] private ISkinGunManager _skinGunManager;
         private Rigidbody2D _body;
@@ -30,6 +39,19 @@ namespace App
         private GunSkin _gunSkin;
         private bool _initialized;
         private float _damage;
+        private int _health;
+        private bool _isInvincible;
+        private float _remainInvincibleTime;
+
+        public int Health
+        {
+            get => _health;
+            set
+            {
+                _health = value;
+                _healthBar.Health = value;
+            }
+        }
 
         public bool IsGrounded
         {
@@ -72,7 +94,7 @@ namespace App
             }
         }
 
-        public GunSkin GunSkin
+        private GunSkin GunSkin
         {
             get => _gunSkin;
             set
@@ -80,16 +102,23 @@ namespace App
                 _gunSkin = value;
                 Initialize();
                 UpdateGunConfig();
+                _characterRenderer.Gun = _gunSkin;
             }
         }
 
 
         public bool IsStunning { get; private set; }
 
+        public Action<State> OnStateCallBack { get; set; }
+
         private void Awake()
         {
             Initialize();
-            GunSkin = GunSkin.Bazooka;
+            var defaultHealth = 3;
+            _healthBar.MaxHealth = defaultHealth;
+            Health = defaultHealth;
+            var gun = _skinGunManager.CurrentSkin;
+            GunSkin = gun;
         }
 
         private void Initialize()
@@ -97,11 +126,10 @@ namespace App
             if (_initialized) return;
             _initialized = true;
             ServiceLocator.Instance.ResolveInjection(this);
-            UpdateSkin();
             _gun = GetComponent<Gun>();
         }
 
-        void Start()
+        private void Start()
         {
             _body = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
@@ -109,10 +137,10 @@ namespace App
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             _horizontal = Input.GetAxisRaw("Horizontal");
-            _vertical = Input.GetAxisRaw("Vertical");
+            _vertical = Input.GetKey(KeyCode.UpArrow) ? 1 : 0;
             if (Input.GetKey(KeyCode.Space))
             {
                 Fire();
@@ -127,7 +155,19 @@ namespace App
             if (trans.position.y < -3f)
             {
                 PoolManager.ReturnObjectToPool(gameObject);
-                Debug.Log("Fail");
+                OnStateCallBack?.Invoke(State.Fail);
+            }
+
+            if (!_isInvincible)
+            {
+                return;
+            }
+
+            _remainInvincibleTime += Time.deltaTime;
+            if (_remainInvincibleTime > InvincibleTime)
+            {
+                _isInvincible = false;
+                _remainInvincibleTime = 0;
             }
         }
 
@@ -135,10 +175,6 @@ namespace App
         {
             if (_isDead) return;
             Direction = new Vector2(_horizontal, _vertical);
-        }
-
-        private void UpdateSkin()
-        {
         }
 
         private void UpdateDirection()
@@ -211,10 +247,27 @@ namespace App
             b.Skin = gunType;
         }
 
+        public void TakeDamage(float damage)
+        {
+            if (_isInvincible)
+            {
+                return;
+            }
+
+            Health -= (int)damage;
+            _characterRenderer.Hit();
+            _isInvincible = true;
+            if (Health <= 0)
+            {
+                OnStateCallBack?.Invoke(State.Fail);
+                PoolManager.ReturnObject(gameObject);
+            }
+        }
+
         public void Completed()
         {
-            Debug.Log("Complete");
             _isDead = true;
+            OnStateCallBack?.Invoke(State.Complete);
             Move(Vector2.zero);
         }
     }
