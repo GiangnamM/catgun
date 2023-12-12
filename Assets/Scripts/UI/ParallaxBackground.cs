@@ -3,58 +3,45 @@ using UnityEngine;
 
 namespace App
 {
+    [ExecuteInEditMode]
     public class ParallaxBackground : MonoBehaviour
     {
-        private const int MaxBackground = 4;
+        public ParallaxCamera parallaxCamera;
+        List<ParallaxLayer> parallaxLayers = new List<ParallaxLayer>();
 
-        [SerializeField] private List<SpriteRenderer> _bg;
-
-        [SerializeField] private Transform _snowLayer;
-
-        [SerializeField] private Transform _fireLayer;
-
-        [SerializeField] private Transform _fallingLeafLayer;
-
-        private bool _hasSnow;
-        private bool _hasFire;
-        private bool _hasFallingLeaf;
-
-        public bool HasSnow
+        private void Start()
         {
-            get => _hasSnow;
-            set
+            if (parallaxCamera == null)
+                if (Camera.main != null)
+                    parallaxCamera = Camera.main.GetComponent<ParallaxCamera>();
+
+            if (parallaxCamera != null)
+                parallaxCamera.onCameraTranslate += Move;
+
+            SetLayers();
+        }
+
+        private void SetLayers()
+        {
+            parallaxLayers.Clear();
+
+            for (int i = 0; i < transform.childCount; i++)
             {
-                _hasSnow = value;
-                _snowLayer.gameObject.SetActive(_hasSnow);
+                ParallaxLayer layer = transform.GetChild(i).GetComponent<ParallaxLayer>();
+
+                if (layer != null)
+                {
+                    layer.name = "Layer-" + i;
+                    parallaxLayers.Add(layer);
+                }
             }
         }
 
-        public bool HasFire
+        private void Move(float delta)
         {
-            get => _hasFire;
-            set
+            foreach (ParallaxLayer layer in parallaxLayers)
             {
-                _hasFire = value;
-                _fireLayer.gameObject.SetActive(_hasFire);
-            }
-        }
-
-        public bool HasFallingLeaf
-        {
-            get => _hasFallingLeaf;
-            set
-            {
-                _hasFallingLeaf = value;
-                _fallingLeafLayer.gameObject.SetActive(_hasFallingLeaf);
-            }
-        }
-
-        public void SetBackground(List<Sprite> bg)
-        {
-            for (var i = 0; i < bg.Count && i < MaxBackground; i++)
-            {
-                _bg[i].sprite = bg[i];
-                _bg[i].gameObject.SetActive(bg[i] != null);
+                layer.Move(delta);
             }
         }
     }
