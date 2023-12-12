@@ -66,7 +66,7 @@ namespace App {
         }
 
         private void SaveData() {
-            _dataManager.Set("skin_data", _data);
+            _dataManager.Set("skin_gun_data", _data);
         }
 
         public GunSkin CurrentSkin {
