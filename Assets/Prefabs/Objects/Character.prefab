@@ -124,7 +124,6 @@ GameObject:
   - component: {fileID: 6818919130178733067}
   - component: {fileID: 6818919130178733060}
   - component: {fileID: 6818919130178733061}
-  - component: {fileID: 1615034632901698734}
   - component: {fileID: 4780468228503319867}
   m_Layer: 0
   m_Name: Character
@@ -185,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterRenderer: {fileID: 6818919131326099719}
   _configManager: {fileID: 11400000, guid: eaec69d30e6ad4a9d95e622868ecb823, type: 2}
-  _bullet: {fileID: 1235090894945490728, guid: 0e366205552d74a319e530e077dc0976, type: 3}
+  _bullet: {fileID: 1235090894945490731, guid: 0e366205552d74a319e530e077dc0976, type: 3}
 --- !u!61 &6818919130178733061
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -212,18 +211,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.98}
   m_EdgeRadius: 0
---- !u!114 &1615034632901698734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6818919130178733065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e357932e4ca261a4aa0d534ebb31d19b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4780468228503319867
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ namespace App
 
         [SerializeField] private DefaultConfigManager _configManager;
 
-        [SerializeField] private Bullet _bullet;
+        [SerializeField] private GameObject _bullet;
 
         [Inject] private ISkinGunManager _skinGunManager;
         private Rigidbody2D _body;
@@ -29,6 +29,7 @@ namespace App
         private Gun _gun;
         private GunSkin _gunSkin;
         private bool _initialized;
+        private float _damage;
 
         public bool IsGrounded
         {
@@ -112,7 +113,7 @@ namespace App
         {
             _horizontal = Input.GetAxisRaw("Horizontal");
             _vertical = Input.GetAxisRaw("Vertical");
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 Fire();
             }
@@ -131,7 +132,6 @@ namespace App
 
         private void UpdateSkin()
         {
-            
         }
 
         private void UpdateDirection()
@@ -183,17 +183,25 @@ namespace App
         private void UpdateGunConfig()
         {
             _gun.FireRate = _configManager.GunBaseInfo[_gunSkin].Item2;
+            _damage = _configManager.GunBaseInfo[GunSkin].Item1;
         }
 
         private void SpawnNormalBullet(GunSkin gunType, float startX = 0f, float startY = 0f)
         {
-            var bullet = Instantiate(_bullet);
-            var trans = bullet.transform;
+            var obj = PoolManager.SpawnObject(_bullet, _gun.GunPos + new Vector3(startX, startY, -0.01f),
+                Quaternion.identity);
+            var trans = obj.transform;
             trans.localPosition = _gun.GunPos + new Vector3(startX, startY, -0.01f);
-            bullet.Direction = _lastDirection;
-            bullet.Speed = BulletSpeed;
-            bullet.Damage = _configManager.GunBaseInfo[gunType].Item1;
-            bullet.Skin = gunType;
+            if (!obj.TryGetComponent<Bullet>(out var b))
+            {
+                Debug.LogWarning("Object can have bullet component");
+                return;
+            }
+
+            b.Direction = _lastDirection;
+            b.Speed = BulletSpeed;
+            b.Damage = _damage;
+            b.Skin = gunType;
         }
 
         public void Completed()

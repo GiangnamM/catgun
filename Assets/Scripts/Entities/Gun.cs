@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace App
 {
-    public class Gun : EntityComponent
+    public class Gun : MonoBehaviour
     {
         [SerializeField] private List<Transform> _gunPosList;
 
@@ -72,7 +72,8 @@ namespace App
             {
                 return false;
             }
-
+            Debug.Log("shoot");
+            _elapsed = 0;
             _canFire = false;
             return true;
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace App
 {
-    public class HealthBar : Entity
+    public class HealthBar : MonoBehaviour
     {
         private static readonly float DUR_EFFECT_TAKE_DAMAGE = 1.3f;
 

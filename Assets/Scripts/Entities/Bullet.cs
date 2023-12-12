@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using Extension;
 using UnityEngine;
 
 namespace App
 {
-    public class Bullet : Entity
+    public class Bullet : MonoBehaviour
     {
         private const float MaxDistance = 16f;
 
@@ -58,7 +59,7 @@ namespace App
             _interval -= Time.deltaTime;
             if (_interval < 0)
             {
-                Destroy(gameObject);
+                PoolManager.ReturnObjectToPool(gameObject);
                 return;
             }
 
