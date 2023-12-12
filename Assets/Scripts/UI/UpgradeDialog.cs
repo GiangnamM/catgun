@@ -125,6 +125,7 @@ namespace App
                 OnLevelBoosterChanged = (_) => InitGunItem()
             });
             InitGunItem();
+            GunSelecting = GunSkin.Bazooka;
         }
 
         private void Hide(Result result)
@@ -147,23 +148,17 @@ namespace App
                 var entry = entries[i];
                 var gunInfo = _skinGunManager.GetInfo(entry);
                 var isOwned = gunInfo.IsOwned;
-                var isSelected = gunInfo.IsSelected;
                 view.GunType = entry;
                 view.IsUnlock = isOwned;
-                view.IsSelected = isSelected;
+                view.IsSelected = GunSelecting == entry;
                 view.Level = _upgradeGunManager.GetLevelGun(entry) + 1;
-                if (isSelected)
-                {
-                    GunSelecting = entry;
-                }
-
                 view.OnItemViewPressed = () => { GunSelecting = entry; };
             }
         }
 
-
         private void UpdateView(GunSkin gun)
         {
+            InitGunItem();
             var gunInfo = _skinGunManager.GetInfo(gun);
             InventoryState = !gunInfo.IsOwned ? InventoryState.Buy :
                 gunInfo.IsSelected ? InventoryState.Equipped : InventoryState.Equip;
@@ -172,7 +167,6 @@ namespace App
             UpdateItemSelected(gun);
             _upgradeInfoTab.GunSkin = gun;
             _upgradeInfoTab.EnableUpgrade = gunInfo.IsOwned;
-            _upgradeInfoTab.OnUpgradeButtonCallback = InitGunItem;
         }
 
         private void UpdateStateDisplay(InventoryState state)
@@ -213,7 +207,7 @@ namespace App
         private void EquipItem(GunSkin gun)
         {
             _skinGunManager.CurrentSkin = gun;
-            InitGunItem();
+            GunSelecting = gun;
             //To do equip inventory
         }
 

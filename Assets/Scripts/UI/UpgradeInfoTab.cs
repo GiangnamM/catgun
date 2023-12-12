@@ -46,7 +46,6 @@ namespace App
             set
             {
                 _enableUpgrade = value;
-                _layerUpgrade.SetActive(_enableUpgrade);
             }
         }
         
@@ -122,8 +121,7 @@ namespace App
             Level = level;
             IsMaxLevel = level == maxLevel;
             Cost = cost;
-            OnUpgradeButtonCallback = () =>
-            {
+            OnUpgradeButtonCallback = () => {
                 if (cost <= _storeManager.GetBalance(StoreItemId.Gold))
                 {
                     //Upgrade Success
@@ -161,8 +159,7 @@ namespace App
                 item.NextValue = MathHelper.ValueAtIndex(upgradeConfig, level + 1) + baseConfig;
             }
         }
-
-
+        
         public void OnButtonUpgradePressed()
         {
             OnUpgradeButtonCallback?.Invoke();
