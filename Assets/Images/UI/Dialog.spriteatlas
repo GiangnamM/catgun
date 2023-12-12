@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dialog
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 422b7bdbd12238a49a1d2f93535db0e4, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: d903f260a65e80e45964b1ace71d5f2b, type: 3}
+  - {fileID: 21300000, guid: 637514803d94bca458a0b7a82cbb9bfc, type: 3}
+  - {fileID: 21300000, guid: d26430c0b65f7424c9322b3cc628c4af, type: 3}
+  - {fileID: 21300000, guid: 051a73d07ff6932429d7f6af967e3a4e, type: 3}
+  - {fileID: 21300000, guid: fe8cae2193aea144e8d6f5bc4e40cd4d, type: 3}
+  - {fileID: 21300000, guid: 6fde6ed1dae9db648b27982c2808eee7, type: 3}
+  - {fileID: 21300000, guid: c8ed8f2287b63f740b0cc7ee7f3c15f8, type: 3}
+  - {fileID: 21300000, guid: a1795e92aa8dc324da2ff412bbd4ee47, type: 3}
+  - {fileID: 21300000, guid: 8cd11dd21711ac944ba5ea0aaf1b9f91, type: 3}
+  - {fileID: 21300000, guid: 220eefd23fa672149b4731077f0776d9, type: 3}
+  - {fileID: 21300000, guid: e3eeff135f6cc9f408e6d6669d555bcb, type: 3}
+  - {fileID: 21300000, guid: 02c47e83fb4c84b4d8f54297a592b2c3, type: 3}
+  - {fileID: 21300000, guid: db1f8635c926cc94299cce0ec0fe9347, type: 3}
+  - {fileID: 21300000, guid: f4f30755de9e983448df76d318c11ca4, type: 3}
+  - {fileID: 21300000, guid: f684ff6633cdd3b409ed1a4a3fbeae81, type: 3}
+  - {fileID: 21300000, guid: a1ce7347aebeec546bbb6e24aeba76de, type: 3}
+  - {fileID: 21300000, guid: a0b361d7cd8d27f47a7ec632c7664be4, type: 3}
+  - {fileID: 21300000, guid: aaaae858ebe39db4492c7417e2b38fbe, type: 3}
+  - {fileID: 21300000, guid: 3ebd3a58f78223f4d93a059543f0286d, type: 3}
+  - {fileID: 21300000, guid: de580ca8aef7aeb45ba0071208220a5b, type: 3}
+  - {fileID: 21300000, guid: 4453cea85fd5acb47bebd2c9d5da1ab9, type: 3}
+  - {fileID: 21300000, guid: 9cce73a9b414b2d43a91c68ecfdc4396, type: 3}
+  - {fileID: 21300000, guid: 69ded48aca080ae4db95210b9b24cd39, type: 3}
+  - {fileID: 21300000, guid: e7b9e7baa91efaa4c853007581267d5f, type: 3}
+  - {fileID: 21300000, guid: 66478c0b296168944a47c9dbf7304e19, type: 3}
+  - {fileID: 21300000, guid: 12326a8b03e7bb940b47db2769cf7e49, type: 3}
+  - {fileID: 21300000, guid: 4c22c5ebae0e3bd40ae021343f31b1e7, type: 3}
+  - {fileID: 21300000, guid: 8be3bedc04752fd47a714d620e7f75e0, type: 3}
+  - {fileID: 21300000, guid: 33f7fa7ea0ee14949a31421a4ddff7cd, type: 3}
+  - {fileID: 21300000, guid: 70bd4d3f3853f134ca5f59c6abcbb1e3, type: 3}
+  - {fileID: 21300000, guid: 55005b6f00cf0654e9e3a5df38dedb95, type: 3}
+  - {fileID: 21300000, guid: ecc7438ff22e8c84bb31df5ab2ba911c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - icon-ammo
+  - clock
+  - white
+  - Rectangle
+  - Button-yellow 2
+  - bg-shadow-square
+  - icon-attack
+  - crossbar-line
+  - Button
+  - arrow
+  - gun-bazooka
+  - pedestal
+  - gun-laser
+  - icon-firerate
+  - Infinity
+  - bar-tap-red
+  - gun-ak47
+  - bar-tap-brown
+  - Select
+  - icon-cooldown
+  - coin
+  - Button-Green 1
+  - bar-tap-blue
+  - crossbar-green
+  - btn-back
+  - Shadow-Upgrade
+  - gun-fireblaster
+  - bar-tap-pink
+  - bar-tap-orange
+  - Tab-gun
+  - icon-dps
+  - gun-m4a1
+  m_RenderDataMap: {}
+  m_Tag: Dialog
+  m_IsVariant: 0

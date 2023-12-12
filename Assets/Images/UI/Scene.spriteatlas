@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Scene
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 1c9b6a28851e68547b6688288d790b77, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: a8458e22d1fc9944faa90bd977d52cfe, type: 3}
+  - {fileID: 21300000, guid: f5922eb75c21233458cd1753c473c104, type: 3}
+  - {fileID: 21300000, guid: 347bc4982344b404ca510ce94cbbb93f, type: 3}
+  - {fileID: 21300000, guid: 1a1de5dd0d3b1254ea2ab9159ae796e3, type: 3}
+  - {fileID: 21300000, guid: 8183e68e028d7dd46bf42af54d447091, type: 3}
+  - {fileID: 21300000, guid: 9a4d1adf503eb6e4bb8cb983d25ea97b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - btn-setting
+  - crossbar
+  - B
+  - btn-plus
+  - icon-gem
+  - icon-coin
+  m_RenderDataMap: {}
+  m_Tag: Scene
+  m_IsVariant: 0

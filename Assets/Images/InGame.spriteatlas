@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: InGame
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: e65832bc95eab8a40a3a036b9ae18ac3, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 24f0b9a0babd94bfc9c12dd1f1b70c42, type: 3}
+  - {fileID: 21300000, guid: 41fe4ed10d8fa4966a70dec8966bd8c2, type: 3}
+  - {fileID: 21300000, guid: d9da3d825afa24babac117edc71c5c4e, type: 3}
+  - {fileID: 21300000, guid: 65aeab531bc634a0fb132448ca9b41ee, type: 3}
+  - {fileID: 21300000, guid: 8927c9041457c454f85d95261bb0ac8b, type: 3}
+  - {fileID: 21300000, guid: 78ddd91499af8453182c72a664760368, type: 3}
+  - {fileID: 21300000, guid: bda16087e306a46f5991c1eb8cae668f, type: 3}
+  - {fileID: 21300000, guid: 838a7548ab3d6420eb4274e1673b0216, type: 3}
+  - {fileID: 21300000, guid: 1cb47898af14246e697208ffb0e7db8d, type: 3}
+  - {fileID: 21300000, guid: 9c43e6396bf9d4db3a0b362a041e8056, type: 3}
+  - {fileID: 21300000, guid: 25af18e94a1df4f0892d3bcb5be79766, type: 3}
+  - {fileID: 21300000, guid: 90d0355a674c9419c83e24b95255b822, type: 3}
+  - {fileID: 21300000, guid: bc1a376aa46644c28a1269a5aaa84c2f, type: 3}
+  - {fileID: 21300000, guid: cd3344ca80c734781807f7c6aaec59c5, type: 3}
+  - {fileID: 21300000, guid: 8aad88de516de47a0a8059ffb1ec7ba2, type: 3}
+  - {fileID: 21300000, guid: 5aff265f97e954f06b0d6e5a45ad7cd0, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - B-QUANTITY
+  - unlimited-bullet
+  - FX-GUN 03
+  - platform
+  - BULLET-GUN-01
+  - btn-up
+  - COIN
+  - FX-GUN 02
+  - btn-fire
+  - FX-GUN 04
+  - FX-GUN 01
+  - white
+  - btn-shield
+  - btn-right
+  - btn-left
+  - GUN 1
+  m_RenderDataMap: {}
+  m_Tag: InGame
+  m_IsVariant: 0
