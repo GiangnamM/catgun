@@ -54,7 +54,6 @@ namespace App
 
         public void OnPlayButtonPressed()
         {
-            // _audioManager.PlaySound(Audio.Button);
             UniTask.Create(async () =>
             {
                 await TransitionLayer.Fade(0.3f,
@@ -66,10 +65,6 @@ namespace App
         {
             if (Constant.ENABLE_CHEAT_GOLD)
                 _storeManager.AddBalance(StoreItemId.Gold, 200);
-            // UniTask.Create(async () => {
-            //     var dialog = SettingsDialog.Create(_canvas);
-            //     await dialog.Show();
-            // });
         }
 
 
