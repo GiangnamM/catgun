@@ -6,7 +6,7 @@ namespace App
     public class Character : MonoBehaviour
     {
         private const int MaxJump = 1;
-        private const float MoveSpeed = 6.1f;
+        private const float MoveSpeed = 5f;
         private const float JumpPower = 14f;
         private const float BulletSpeed = 15f;
 
@@ -121,6 +121,13 @@ namespace App
             if (Mathf.Abs(_body.velocity.y) < 0.1f && !IsGrounded)
             {
                 IsGrounded = IsOnGround();
+            }
+
+            var trans = transform;
+            if (trans.position.y < -3f)
+            {
+                PoolManager.ReturnObjectToPool(gameObject);
+                Debug.Log("Fail");
             }
         }
 
