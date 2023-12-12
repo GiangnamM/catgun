@@ -26,6 +26,7 @@ namespace App
         [SerializeField] private HealthBar _healthBar;
 
         [Inject] private ISkinGunManager _skinGunManager;
+        [Inject] private IUpgradeGunManager _upgradeGunManager;
         private Rigidbody2D _body;
         private Collider2D _collider;
         private int _jumpCount;
@@ -154,7 +155,7 @@ namespace App
             var trans = transform;
             if (trans.position.y < -3f)
             {
-                PoolManager.ReturnObjectToPool(gameObject);
+                PoolManager.ReturnObject(gameObject);
                 OnStateCallBack?.Invoke(State.Fail);
             }
 
@@ -225,8 +226,20 @@ namespace App
 
         private void UpdateGunConfig()
         {
-            _gun.FireRate = _configManager.GunBaseInfo[_gunSkin].Item2;
-            _damage = _configManager.GunBaseInfo[GunSkin].Item1;
+            var baseFireRate = _configManager.GunBaseInfo[_gunSkin].Item2;
+            var baseDame = _configManager.GunBaseInfo[_gunSkin].Item1;
+            if (!_configManager.AllUpgradeGunTuples.TryGetValue(_gunSkin, out var arr))
+            {
+                Debug.LogWarning("Config doesn't have config upgrade gun name: " + _gunSkin);
+                return;
+            }
+
+            var (arrDame, arrFireRate) = arr;
+            var level = _upgradeGunManager.GetLevelGun(_gunSkin);
+            var upgradeDame = MathHelper.ValueAtIndex(arrDame, level);
+            var upgradeFireRate = MathHelper.ValueAtIndex(arrFireRate, level);
+            _gun.FireRate = baseFireRate + upgradeFireRate;
+            _damage = baseDame + upgradeDame;
         }
 
         private void SpawnNormalBullet(GunSkin gunType, float startX = 0f, float startY = 0f)

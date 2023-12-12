@@ -29,7 +29,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1012443929881911230}
-  - {fileID: 7588681519936453648}
   - {fileID: 4766019599029648152}
   m_Father: {fileID: 3759484675140813241}
   m_RootOrder: 0
@@ -62,7 +61,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7588681519936453648}
   m_Father: {fileID: 8979940346923014157}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -149,7 +149,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8979940346923014157}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 250
-  m_fontColor: {r: 0.9811321, g: 0, b: 0, a: 0}
+  m_fontColor: {r: 0.9811321, g: 0, b: 0, a: 0.000005185604}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -315,12 +315,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4902818004923591227}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25333333, y: -0.0501, z: -0.02}
-  m_LocalScale: {x: 120.33334, y: 1.5, z: 1}
+  m_LocalPosition: {x: -0.39, y: 0, z: -0.02}
+  m_LocalScale: {x: 19.51, y: 1.4999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8979940346923014157}
-  m_RootOrder: 1
+  m_Father: {fileID: 1012443929881911230}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5983577419773676125
 SpriteRenderer:
@@ -363,7 +363,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 90d0355a674c9419c83e24b95255b822, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd39cd8e3a634894398ed950579aec50, type: 3}
   m_Color: {r: 1, g: 0.11764706, b: 0.11764706, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -384,7 +384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3759484675140813241}
   - component: {fileID: 7123211398958507085}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

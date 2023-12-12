@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Extension;
@@ -17,6 +18,8 @@ namespace App
 
     public class UpgradeDialog : MonoBehaviour
     {
+        private readonly List<GunSkin> entries = new() { GunSkin.Bazooka, GunSkin.FireBlaster, GunSkin.Laser };
+
         public enum Result
         {
             Close,
@@ -50,6 +53,7 @@ namespace App
         private bool _isActive;
         private int _costGun;
         private GunSkin _gunSelecting;
+        private ObserverHandle _handle;
 
         private GunSkin GunSelecting
         {
@@ -101,6 +105,11 @@ namespace App
             OnButtonStateCallBack = OnStateCallBack;
         }
 
+        private void OnDestroy()
+        {
+            _handle?.Dispose();
+        }
+
         private void Initialize()
         {
             if (_initialized)
@@ -110,6 +119,11 @@ namespace App
 
             _initialized = true;
             ServiceLocator.Instance.ResolveInjection(this);
+            _handle = new ObserverHandle();
+            _handle.AddObserver(_upgradeGunManager, new UpgradeGunObserver
+            {
+                OnLevelBoosterChanged = (_) => InitGunItem()
+            });
             InitGunItem();
         }
 
@@ -127,12 +141,6 @@ namespace App
 
         private void InitGunItem()
         {
-            var entries = new[]
-            {
-                GunSkin.Bazooka,
-                GunSkin.FireBlaster,
-                GunSkin.Laser,
-            };
             for (var i = 0; i < _upgradeItemViews.Length; i++)
             {
                 var view = _upgradeItemViews[i];
@@ -143,6 +151,7 @@ namespace App
                 view.GunType = entry;
                 view.IsUnlock = isOwned;
                 view.IsSelected = isSelected;
+                view.Level = _upgradeGunManager.GetLevelGun(entry) + 1;
                 if (isSelected)
                 {
                     GunSelecting = entry;
@@ -162,12 +171,9 @@ namespace App
             _gunSelector.GunType = gun;
             UpdateItemSelected(gun);
             _upgradeInfoTab.GunSkin = gun;
+            _upgradeInfoTab.EnableUpgrade = gunInfo.IsOwned;
+            _upgradeInfoTab.OnUpgradeButtonCallback = InitGunItem;
         }
-
-        private void UpdateUpgradeInfoTab(GunSkin gunSkin)
-        {
-        }
-
 
         private void UpdateStateDisplay(InventoryState state)
         {

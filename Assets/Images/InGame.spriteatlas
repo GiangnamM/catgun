@@ -52,6 +52,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 90d0355a674c9419c83e24b95255b822, type: 3}
   - {fileID: 21300000, guid: bc1a376aa46644c28a1269a5aaa84c2f, type: 3}
   - {fileID: 21300000, guid: cd3344ca80c734781807f7c6aaec59c5, type: 3}
+  - {fileID: 21300000, guid: dd39cd8e3a634894398ed950579aec50, type: 3}
   - {fileID: 21300000, guid: 8aad88de516de47a0a8059ffb1ec7ba2, type: 3}
   - {fileID: 21300000, guid: 5aff265f97e954f06b0d6e5a45ad7cd0, type: 3}
   m_PackedSpriteNamesToIndex:
@@ -69,6 +70,7 @@ SpriteAtlas:
   - white
   - btn-shield
   - btn-right
+  - health
   - btn-left
   - GUN 1
   m_RenderDataMap: {}

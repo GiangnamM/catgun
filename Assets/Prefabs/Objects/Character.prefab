@@ -186,7 +186,7 @@ MonoBehaviour:
   _characterRenderer: {fileID: 6818919131326099719}
   _configManager: {fileID: 11400000, guid: eaec69d30e6ad4a9d95e622868ecb823, type: 2}
   _bullet: {fileID: 1235090894945490731, guid: 0e366205552d74a319e530e077dc0976, type: 3}
-  _healthBar: {fileID: 7123211398958507085, guid: 85097721fecce44da829570583024e58, type: 3}
+  _healthBar: {fileID: 6977563390263883643}
 --- !u!61 &6818919130178733061
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -463,6 +463,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5983577419773676125, guid: 85097721fecce44da829570583024e58, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8165589707921920604, guid: 85097721fecce44da829570583024e58, type: 3}
       propertyPath: m_Name
       value: HealthBar
@@ -478,3 +482,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3759484675140813241, guid: 85097721fecce44da829570583024e58, type: 3}
   m_PrefabInstance: {fileID: 148605497675453238}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6977563390263883643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7123211398958507085, guid: 85097721fecce44da829570583024e58, type: 3}
+  m_PrefabInstance: {fileID: 148605497675453238}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3286d33a99da50e45946feea6bf201a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

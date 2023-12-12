@@ -630,6 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85744c7881429404eafac95ba414072c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _configManager: {fileID: 0}
   _infoGunUpgradeViews:
   - {fileID: 6490975909421240259}
   - {fileID: 7136803509466689566}
@@ -640,6 +641,7 @@ MonoBehaviour:
   _currentLevelUpgradeText: {fileID: 5867055668981045086}
   _nextLevelUpgradeText: {fileID: 271549789769542225}
   _costText: {fileID: 3335906445177352417}
+  _layerUpgrade: {fileID: 5301454287315618805}
 --- !u!114 &6133321794395822109
 MonoBehaviour:
   m_ObjectHideFlags: 0

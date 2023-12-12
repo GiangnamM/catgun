@@ -99,7 +99,15 @@ namespace App
                 return;
             }
 
+            Show();
             _initialized = true;
+        }
+
+        private void Show()
+        {
+            _dialogLayer.transform.localScale = Vector3.zero;
+            DOTween.Sequence()
+                .Append(_dialogLayer.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack));
         }
 
         private void Hide(InfoDialogResult result)

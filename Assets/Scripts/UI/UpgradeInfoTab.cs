@@ -26,6 +26,8 @@ namespace App
 
         [SerializeField] private TextMeshProUGUI _costText;
 
+        [SerializeField] private GameObject _layerUpgrade;
+
         [Inject] private IUpgradeGunManager _upgradeGunManager;
         [Inject] private IStoreManager _storeManager;
         private int _level;
@@ -34,9 +36,20 @@ namespace App
         private bool _isUnLock;
         private bool _isMaxLevel;
         private GunSkin _gunSkin;
-
+        private bool _enableUpgrade;
+        
         public Canvas Canvas { get; set; }
 
+        public bool EnableUpgrade
+        {
+            get => _enableUpgrade;
+            set
+            {
+                _enableUpgrade = value;
+                _layerUpgrade.SetActive(_enableUpgrade);
+            }
+        }
+        
         public GunSkin GunSkin
         {
             get => _gunSkin;
@@ -142,23 +155,13 @@ namespace App
                 var upgradeConfig = upgradeConfigs[i];
                 var baseConfig = baseConfigs[i];
                 item.ViewType = type;
-                item.CurrentValue = ValueAtIndex(upgradeConfig, level) + baseConfig;
+                item.CurrentValue = MathHelper.ValueAtIndex(upgradeConfig, level) + baseConfig;
                 item.IsMaxLevel = maxLevel == level;
                 if (maxLevel == level) continue;
-                item.NextValue = ValueAtIndex(upgradeConfig, level + 1) + baseConfig;
+                item.NextValue = MathHelper.ValueAtIndex(upgradeConfig, level + 1) + baseConfig;
             }
         }
 
-        private float ValueAtIndex(List<float> arr, int index)
-        {
-            float sum = 0;
-            for (int i = 0; i <= index; i++)
-            {
-                sum += arr[i];
-            }
-
-            return sum;
-        }
 
         public void OnButtonUpgradePressed()
         {

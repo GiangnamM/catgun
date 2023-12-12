@@ -81,10 +81,6 @@ namespace App
             var maxHealth = Mathf.Max(1, MaxHealth);
             var percentage = Health / maxHealth;
             var width = _healthWidth * percentage;
-            var trans = _healthRenderer.transform;
-            var position = trans.localPosition;
-            position.x = -(_healthWidth - width) * 0.5f;
-            trans.localPosition = position;
             var size = _healthRenderer.size;
             size.x = width;
             _healthRenderer.size = size;
