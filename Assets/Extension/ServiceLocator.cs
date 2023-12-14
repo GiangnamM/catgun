@@ -8,10 +8,7 @@ using JetBrains.Annotations;
 namespace Extension {
     public class ServiceLocator : IServiceLocator {
         private static ServiceLocator _sharedInstance;
-
-        /// <summary>
-        /// Gets the global instance.
-        /// </summary>
+        
         public static IServiceLocator Instance => _sharedInstance ??= new ServiceLocator();
 
         private readonly Dictionary<string, object> _services = new();

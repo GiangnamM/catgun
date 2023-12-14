@@ -2,14 +2,9 @@ using System;
 
 using JetBrains.Annotations;
 
-using UnityEngine.Assertions;
-
 namespace Extension {
     [AttributeUsage(AttributeTargets.Interface)]
     public class ServiceAttribute : Attribute {
-        /// <summary>
-        /// Gets the registered name of this service.
-        /// </summary>
         [NotNull]
         public string Name { get; }
 
