@@ -2,16 +2,36 @@ using System;
 using DG.Tweening;
 using Extension;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace App
 {
     public class Enemy : MonoBehaviour
     {
+        private readonly float MoveSpeed = 1.5f;
         [SerializeField] private SkeletonAnimHelper _animHelper;
         [SerializeField] private HealthBar _healthBar;
         private int _health;
         private Tween _tween;
         private Rigidbody2D _body;
+        private Transform _trans;
+        private float _distance;
+        private bool _isMoveDone;
+        private float _interval;
+
+        public bool IsMoveDone
+        {
+            get => _isMoveDone;
+            set
+            {
+                _isMoveDone = value;
+                _distance = Random.Range(-2, 2);
+                var scale = _animHelper.transform.localScale;
+                scale.x = _distance > 0 ? 1 : -1;
+                _animHelper.transform.localScale = scale;
+                _interval = Math.Abs(_distance) / MoveSpeed;
+            }
+        }
 
         public int Health
         {
@@ -29,6 +49,8 @@ namespace App
             var defaultHealth = 200;
             _healthBar.MaxHealth = defaultHealth;
             Health = defaultHealth;
+            _trans = transform;
+            IsMoveDone = false;
         }
 
         private void Update()
@@ -37,6 +59,15 @@ namespace App
             {
                 PoolManager.ReturnObject(gameObject);
             }
+
+            _interval -= Time.deltaTime;
+            if (_interval > 0)
+            {
+                _trans.position += MoveSpeed * Time.deltaTime * (_distance > 0 ? Vector3.left : Vector3.right);
+                return;
+            }
+
+            IsMoveDone = _isMoveDone;
         }
 
         private void OnTriggerEnter2D(Collider2D collider)
