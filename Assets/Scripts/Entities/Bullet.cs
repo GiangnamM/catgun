@@ -98,7 +98,7 @@ namespace App
         {
             if (col.TryGetComponent<Enemy>(out var e))
             {
-                e.TakeDamage(20,
+                e.TakeDamage(Damage,
                     transform.position.x - e.transform.position.x > 0 ? new Vector2(-1, 9) : new Vector2(1, 9));
             }
         }
